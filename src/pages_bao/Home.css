@@ -1,0 +1,69 @@
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.banner-home img {
+  max-width: 100%;
+  height: auto;
+  
+}
+.room-group {
+  padding-right: 0px;
+}
+.room-btn {
+
+}
+
+.wrap-badgebyme {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  z-index: 100;
+}
+.best-sell.wrap-badgebyme {
+  max-width: 50px;
+  height: 60px;
+}
+.new-product.wrap-badgebyme {
+  max-width: 50px;
+  height: 50px;
+}
+
+.badgebyme {
+  position: relative;
+}
+.badgebyme span {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  
+  
+}
+
+.best-sell.wrap-badgebyme span {
+  font-size: 12px;
+}
+
+.new-product.wrap-badgebyme span {
+  top: 22%;
+  left: 15%;
+}
+
+.row-list {
+  height: 260px;
+}
+
+.img-post {
+  height: 500px;
+  width: 100%;
+}
+.post-title {
+  /* height: 70px; */
+}
+.post-desc {
+  /* height: 50px; */
+}

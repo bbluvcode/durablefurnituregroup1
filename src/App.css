@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+a.product-link {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: coral;
+    font-weight: bold;
+  }
+  
+.slick-next {
+    right: 0px !important;
+  }
+  .slick-prev {
+    left: 5px !important;
+    z-index: 1000;
+  }
+  .slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: black !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  

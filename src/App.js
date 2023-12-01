@@ -1,0 +1,115 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./App.css";
+import "./pages_binh/Binh.css";
+import { Routes, Route } from "react-router-dom";
+import ShopingCart from "./pages_binh/ShopingCart";
+import Contact from "./pages_binh/Contact";
+import Compare from "./pages_binh/Compare";
+import Header from "./pages_binh/Header";
+import ProductSearch from "./pages_binh/ProductSearch";
+
+import { useState, useEffect } from "react";
+import Home from "./pages_bao/Home";
+import Product from "./pages_bao/Product";
+import FilterBrand from "./pages_bao/FilterBrand.jsx";
+import FilterRoom from "./pages_bao/FilterRoom.jsx";
+import Footer from "./pages_kanh/Footer";
+import Brand from "./pages_bao/Brand";
+import ProductDetail from "./pages_bao/ProductDetail.jsx";
+import Room from "./pages_kanh/Room";
+import ScrollToTop from "./pages_bao/ScrollToTop.jsx";
+import Register from "./pages_bao/Register.jsx";
+import Login from "./pages_bao/Login.jsx";
+import Confirm from "./pages_binh/components/Confirm.jsx";
+import { useSelector } from "react-redux";
+import WishList from "./pages_binh/WishList.jsx";
+import Inspiration from "./pages_kanh/Inspiration";
+import Inspiration1 from "./pages_kanh/Inspiration1";
+import Inspiration2 from "./pages_kanh/Inspiration2";
+import Inspiration3 from "./pages_kanh/Inspiration3";
+
+function App() {
+  const linkHome = "/";
+  const linkProduct = "/product";
+  const linkBrandname = "/brand";
+  const linkRoom = "/room";
+  const linkShopingcart = "/shopingcart";
+  const linkContact = "/contact";
+  const linkCompare = "/compare";
+  const linkFilterBrand = "/filterBrand";
+  const linkFilterRoom = "/filterRoom";
+  const linkProductDetail = "/product-detail";
+  const linkInspiration = "/inspiration";
+  const linkInspiration1 = "/inspiration1";
+  const linkInspiration2 = "/inspiration2";
+  const linkInspiration3 = "/inspiration3";
+
+  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("https://6558bb31e93ca47020a9a821.mockapi.io/products")
+      .then((data) => data.json())
+      .then((dataList) => setProducts(dataList));
+    fetch("https://655fffed83aba11d99d01309.mockapi.io/users")
+      .then((data) => data.json())
+      .then((dataList) => setUsers(dataList));
+  }, []);
+
+  const { shopingcart } = useSelector((state) => state.shopReducer);
+  const { wishList } = useSelector((state) => state.shopReducer);
+
+  return (
+    <div className="App ">
+      <Header link={linkContact} shopingcart={shopingcart} />
+      <Routes>
+        <Route path={linkHome} element={<Home products={products} />}></Route>
+        <Route path="*" element={<Home products={products} />}></Route>
+        <Route
+          path={linkProduct}
+          element={<Product products={products} />}
+        ></Route>
+        <Route
+          path={linkBrandname}
+          element={<Brand products={products} />}
+        ></Route>
+        <Route
+          path={linkProductDetail}
+          element={<ProductDetail products={products} />}
+        ></Route>
+        <Route
+          path={linkFilterBrand}
+          element={<FilterBrand products={products} />}
+        />
+        <Route
+          path={linkFilterRoom}
+          element={<FilterRoom products={products} />}
+        />
+        <Route path={linkRoom} element={<Room products={products} />}></Route>
+        <Route path={linkInspiration}></Route>
+        <Route
+          path={linkShopingcart}
+          element={<ShopingCart shopingcart={shopingcart} />}
+        />
+        <Route path={linkContact} element={<Contact />} />
+        <Route path={linkCompare} element={<Compare />} />
+        <Route path="/productsearch" element={<ProductSearch />} />
+        <Route path="/confirm" element={<Confirm />} />
+        <Route path="/productsearch" element={<ProductSearch />} />
+        <Route path="/register" element={<Register users={users} />} />
+        <Route path="/login" element={<Login users={users} />} />
+        <Route path="/wishlist" element={<WishList wishList={wishList} />} />
+
+        <Route path={linkInspiration} element={<Inspiration />} />
+        <Route path={linkInspiration1} element={<Inspiration1 />} />
+        <Route path={linkInspiration2} element={<Inspiration2 />} />
+        <Route path={linkInspiration3} element={<Inspiration3 />} />
+      </Routes>
+
+      <Footer />
+      <ScrollToTop />
+    </div>
+  );
+}
+
+export default App;
