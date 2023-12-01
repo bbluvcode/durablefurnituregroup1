@@ -138,7 +138,11 @@ function Header(props) {
       {/* ---------------------------------lightHeader---------------------------------- */}
       <nav className="navbar navbar-expand-md bg-light navbar-light">
         <NavLink className="navbar-brand" to="/">
-          <img className="logo" src="/img/logo/logo-bglight-trans.png" alt="" />
+          <img
+            className="logo"
+            src="./img/logo/logo-bglight-trans.png"
+            alt=""
+          />
         </NavLink>
         <button
           className="navbar-toggler"
