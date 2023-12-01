@@ -44,7 +44,7 @@ function CompareItem2(props) {
               src={
                 selectedProduct
                   ? selectedProduct.image
-                  : "/img/logo/addproduct.png"
+                  : "./img/logo/addproduct.png"
               }
               alt={
                 selectedProduct ? selectedProduct.name : "No product selected"
