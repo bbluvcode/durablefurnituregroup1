@@ -19,7 +19,7 @@ function Header(props) {
   const linkProduct = "/product";
   const linkBrandname = "/brand";
   const linkRoom = "/room";
-  const linkInspiration = "/inspiration";
+  const linkInspiration = "/inspirationmain";
   const linkContact = "/contact";
   const navigate = useNavigate();
   const dispatch = useDispatch();
