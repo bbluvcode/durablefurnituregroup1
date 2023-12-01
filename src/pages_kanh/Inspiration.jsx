@@ -1,6 +1,6 @@
 import "./Inspiration.css";
 import { useNavigate } from "react-router-dom";
-function Inspirationmain() {
+function Inspiration() {
   const navigate = useNavigate();
   return (
     <div className="container">
@@ -88,4 +88,4 @@ function Inspirationmain() {
   );
 }
 
-export default Inspirationmain;
+export default Inspiration;
