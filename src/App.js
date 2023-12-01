@@ -24,7 +24,7 @@ import Login from "./pages_bao/Login.jsx";
 import Confirm from "./pages_binh/components/Confirm.jsx";
 import { useSelector } from "react-redux";
 import WishList from "./pages_binh/WishList.jsx";
-import Inspiration from "./pages_kanh/Inspiration";
+import Inspirationmain from "./pages_kanh/Inspirationmain.jsx";
 import Inspiration1 from "./pages_kanh/Inspiration1";
 import Inspiration2 from "./pages_kanh/Inspiration2";
 import Inspiration3 from "./pages_kanh/Inspiration3";
@@ -40,7 +40,7 @@ function App() {
   const linkFilterBrand = "/filterBrand";
   const linkFilterRoom = "/filterRoom";
   const linkProductDetail = "/product-detail";
-  const linkInspiration = "/inspiration";
+  const linkInspiration = "/inspirationmain";
   const linkInspiration1 = "/inspiration1";
   const linkInspiration2 = "/inspiration2";
   const linkInspiration3 = "/inspiration3";
@@ -100,7 +100,7 @@ function App() {
         <Route path="/login" element={<Login users={users} />} />
         <Route path="/wishlist" element={<WishList wishList={wishList} />} />
 
-        <Route path={linkInspiration} element={<Inspiration />} />
+        <Route path={linkInspiration} element={<Inspirationmain />} />
         <Route path={linkInspiration1} element={<Inspiration1 />} />
         <Route path={linkInspiration2} element={<Inspiration2 />} />
         <Route path={linkInspiration3} element={<Inspiration3 />} />
