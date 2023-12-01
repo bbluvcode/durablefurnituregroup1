@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 import "./pages_binh/Binh.css";
+import "./pages_kanh/Footer.css";
 import { Routes, Route } from "react-router-dom";
 import ShopingCart from "./pages_binh/ShopingCart";
 import Contact from "./pages_binh/Contact";
