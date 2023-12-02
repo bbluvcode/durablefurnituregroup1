@@ -15,7 +15,7 @@ import ShopingCart_float from "./components/ShopingCart_float";
 
 function Header(props) {
   const { shopingcart } = props;
-  const numberphone = " 09.xxx.xxx.xx";
+  const numberphone = "0939966602";
   const linkProduct = "/product";
   const linkBrandname = "/brand";
   const linkRoom = "/room";
@@ -136,7 +136,7 @@ function Header(props) {
             <NavLink to="/login" className="link text-white">
               <i class="fa fa-user-circle ms-1 me-1"></i>
               <span className="title_headersmall">
-                {isLogin==="true"? username: "Login"}
+                {isLogin === "true" ? username : "Login"}
               </span>
             </NavLink>
           </div>
@@ -145,7 +145,7 @@ function Header(props) {
       {/* ---------------------------------lightHeader---------------------------------- */}
       <nav className="navbar navbar-expand-md bg-light navbar-light">
         <NavLink className="navbar-brand" to="/">
-          <img className="logo" src="/img/logo/logo-bglight-trans.png" alt="" />
+          <img className="logo" src="./img/logo/logo-bglight-trans.png" alt="" />
         </NavLink>
         <button
           className="navbar-toggler"
@@ -208,7 +208,7 @@ function Header(props) {
         id="headerFixed"
       >
         <NavLink className="navbar-brand" to="/">
-          <img className="logo" src="/img/logo/logo-bglight-trans.png" alt="" />
+          <img className="logo" src="./img/logo/logo-bglight-trans.png" alt="" />
         </NavLink>
         <button
           className="navbar-toggler"

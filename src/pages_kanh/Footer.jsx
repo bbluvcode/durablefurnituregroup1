@@ -45,7 +45,7 @@ function Footer() {
       <div className="container pt-3">
         <div className="row text-style">
           <p className="col-md-4">BAB COMPANY INFORMATION</p>
-          <p className="col-md-4 text-center"><i class="fa fa-map-marker-alt" style={{"fontSize":"0.7em"}}></i> LOCATION</p>
+          <p className="col-md-4 text-center"><i class="fa fa-map-marker-alt" style={{ "fontSize": "0.7em" }}></i> LOCATION</p>
           <p className="col-md-4">✉ CONTACT US</p>
         </div>
         <div className="row my-3">
@@ -60,7 +60,7 @@ function Footer() {
           <div className="col-md-4 text-center">
             <iframe
               className="d-inline-block"
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.325316305318!2d106.66372207495763!3d10.786376989362955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23c80767d%3A0x5a981a5efee9fd7d!2zNTkwIMSQLiBDw6FjaCBN4bqhbmcgVGjDoW5nIDgsIFBoxrDhu51uZyAxMSwgUXXhuq1uIDMsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2sus!4v1701420295886!5m2!1svi!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.325316305318!2d106.66372207495763!3d10.786376989362955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23c80767d%3A0x5a981a5efee9fd7d!2zNTkwIMSQLiBDw6FjaCBN4bqhbmcgVGjDoW5nIDgsIFBoxrDhu51uZyAxMSwgUXXhuq1uIDMsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2sus!4v1701420295886!5m2!1svi!2sus"
               title="Map Google"
               width="65%"
               height="80%"
@@ -74,7 +74,7 @@ function Footer() {
             <div className="row text-style-second">
               <a href="mailto:durablefurnitures2023@gmail.com" className="d-block text-decoration-none h5">Email: durablefurnitures2023@gmail.com</a>
               <a className=" d-block text-decoration-none text-dark h5" href="tel:+840939966602">
-                Hotline: 09.xxx.xxxx
+                Hotline: +840939966602
               </a>
               <p className=" h5">Thanks for visiting</p>
             </div>
@@ -111,15 +111,15 @@ function Footer() {
           </button>
 
         </Slider>
-        <div className="row mt-4">          
+        <div className="row mt-4">
           <p className="col-md-12">
-          &copy; Copyright of Durable Furniture - a brand belonging to BAB Furniture
-          Since 2023 - registered trademark number 979605 Intellectual Property Department
+            &copy; Copyright of Durable Furniture - a brand belonging to BAB Furniture
+            Since 2023 - registered trademark number 979605 Intellectual Property Department
           </p>
-         <div className="col-md-4 invisible">Hidden</div>
-         <div className="col-md-3 text-end">
-          <img src="img/logo/copyright.png" className="d-inline-block pe-3" alt="" />
-         </div>
+          <div className="col-md-4 invisible">Hidden</div>
+          <div className="col-md-3 text-end">
+            <img src="img/logo/copyright.png" className="d-inline-block pe-3" alt="" />
+          </div>
         </div>
 
       </div>

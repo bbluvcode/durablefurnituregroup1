@@ -30,19 +30,18 @@ function Contact() {
   });
 
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbx2GLoyoOlXQZqDUWNA5Sp8x5NQZnwdpNF831Tl6XZR9WCArjemEOhWQ4u-7Cwb93C0Xw/exec";
+    "https://script.google.com/macros/s/AKfycbzCoyYwVa60ADTcJ1YvSpOblR8Y8W5dCAZMUMhFIO9iwSmimZxExIfMDe-6EM-p1bcd0Q/exec";
   const handleSubmit = (e) => {
+    navigate("/confirm");
     e.preventDefault();
     fetch(scriptURL, { method: "POST", body: new FormData(e.target) })
       .then((response) => {
-        console.log("Success!", response);
         // alert("Register Successfully");
-        navigate("/confirm");
       })
       .catch((error) => {
         console.error("Error!", error.message);
         alert(
-          "Có lỗi xảy ra, vui lòng liên hệ <email> để được hỗ trợ mua hàng."
+          "There is an error, please contact email:bbluvcode@gmail.com for assistance with your purchase."
         );
       });
   };
@@ -82,7 +81,7 @@ function Contact() {
                   <i className="fa fa-mobile-alt contact-us-icon rise-shake" />
                 </span>
                 <h5>PHONE</h5>
-                <p className="contact-us-content">09.xxx.xxxx</p>
+                <p className="contact-us-content">0939966602</p>
               </NavLink>
             </div>
             <div className="col-4 contact-us-child">
@@ -111,7 +110,7 @@ function Contact() {
                     {" "}
                     providing your information in the form below{" "}
                   </strong>
-                  , or call the hotline at <strong> 09.xxx.xxxx</strong>
+                  , or call the hotline at <strong> 0939966602</strong>
                 </p>
                 <form
                   name="submit-to-google-sheet"
@@ -146,7 +145,7 @@ function Contact() {
                         onChange={formik.handleChange}
                       />
                       {formik.errors.phonenumber &&
-                      formik.touched.phonenumber ? (
+                        formik.touched.phonenumber ? (
                         <div className="text-danger">
                           {formik.errors.phonenumber}
                         </div>
@@ -192,7 +191,7 @@ function Contact() {
                       <NavLink className="link" to="tel:+840939966602">
                         <button className="btn btn-danger form-width btn-grad">
                           <div>
-                            <i className="fa fa-phone-volume" /> 09.xxx.xxxx
+                            <i className="fa fa-phone-volume" /> 0939966602
                           </div>
                         </button>
                       </NavLink>
