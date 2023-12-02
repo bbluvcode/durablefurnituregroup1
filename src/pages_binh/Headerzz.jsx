@@ -19,7 +19,7 @@ function Header(props) {
   const linkProduct = "/product";
   const linkBrandname = "/brand";
   const linkRoom = "/room";
-  const linkInspiration = "/inspiration";
+  const linkInspiration = "/blog";
   const linkContact = "/contact";
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -95,11 +95,6 @@ function Header(props) {
     updateOrderSummary();
   }, [shopingcart]);
 
-  var isLogin = sessionStorage.getItem("islogin");
-  console.log(isLogin);
-  var username = sessionStorage.getItem("username");
-  console.log(username);
-
   return (
     <div className="">
       {/* ----------------------------topheader---------------------------------- */}
@@ -135,9 +130,7 @@ function Header(props) {
           <div className="Login-icon">
             <NavLink to="/login" className="link text-white">
               <i class="fa fa-user-circle ms-1 me-1"></i>
-              <span className="title_headersmall">
-                {isLogin==="true"? username: "Login"}
-              </span>
+              <span className="title_headersmall">Login</span>
             </NavLink>
           </div>
         </div>
@@ -145,7 +138,11 @@ function Header(props) {
       {/* ---------------------------------lightHeader---------------------------------- */}
       <nav className="navbar navbar-expand-md bg-light navbar-light">
         <NavLink className="navbar-brand" to="/">
-          <img className="logo" src="/img/logo/logo-bglight-trans.png" alt="" />
+          <img
+            className="logo"
+            src="./img/logo/logo-bglight-trans.png"
+            alt=""
+          />
         </NavLink>
         <button
           className="navbar-toggler"
@@ -176,7 +173,7 @@ function Header(props) {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/blog">
+              <NavLink className="nav-link" to={linkInspiration}>
                 Inspiration Corner
               </NavLink>
             </li>

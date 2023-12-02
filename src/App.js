@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 import "./pages_binh/Binh.css";
-import "./pages_kanh/Footer.css";
 import { Routes, Route } from "react-router-dom";
 import ShopingCart from "./pages_binh/ShopingCart";
 import Contact from "./pages_binh/Contact";
@@ -25,10 +24,10 @@ import Login from "./pages_bao/Login.jsx";
 import Confirm from "./pages_binh/components/Confirm.jsx";
 import { useSelector } from "react-redux";
 import WishList from "./pages_binh/WishList.jsx";
-import Inspiration from "./pages_kanh/Inspiration.jsx";
 import Inspiration1 from "./pages_kanh/Inspiration1";
 import Inspiration2 from "./pages_kanh/Inspiration2";
 import Inspiration3 from "./pages_kanh/Inspiration3";
+import Inspiration from "./pages_kanh/Inspiration.jsx";
 import Inspiration4 from "./pages_kanh/Inspiration4.jsx";
 
 function App() {
@@ -50,6 +49,7 @@ function App() {
 
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [review, setReview] = useState([]);
   useEffect(() => {
     fetch("https://6558bb31e93ca47020a9a821.mockapi.io/products")
       .then((data) => data.json())
@@ -57,7 +57,15 @@ function App() {
     fetch("https://655fffed83aba11d99d01309.mockapi.io/users")
       .then((data) => data.json())
       .then((dataList) => setUsers(dataList));
-  }, []);
+
+  fetch("https://653f52879e8bd3be29e04424.mockapi.io/movies")
+  .then((data) => data.json())
+  .then((dataList) => setReview(dataList));
+}, []);
+  console.log(review);
+
+
+console.log(products);    
 
   const { shopingcart } = useSelector((state) => state.shopReducer);
   const { wishList } = useSelector((state) => state.shopReducer);
