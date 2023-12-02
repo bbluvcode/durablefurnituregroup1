@@ -29,6 +29,7 @@ import Inspiration2 from "./pages_kanh/Inspiration2";
 import Inspiration3 from "./pages_kanh/Inspiration3";
 import Inspiration from "./pages_kanh/Inspiration.jsx";
 import Inspiration4 from "./pages_kanh/Inspiration4.jsx";
+import CheckOut from "./pages_binh/CheckOut.jsx";
 
 function App() {
   const linkHome = "/";
@@ -115,6 +116,9 @@ console.log(products);
         <Route path={linkInspiration2} element={<Inspiration2 />} />
         <Route path={linkInspiration3} element={<Inspiration3 />} />
         <Route path={linkInspiration4} element={<Inspiration4 />} />
+
+        <Route path="/checkout" element={<CheckOut />} />
+        
       </Routes>
 
       <Footer />

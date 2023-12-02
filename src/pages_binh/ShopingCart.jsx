@@ -5,6 +5,7 @@ import RelatedProduct from "./components/RelatedProduct";
 import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { updatenumberofproduct } from "../redux/reducers/shopReducer";
+import { useNavigate } from "react-router-dom";
 
 function ShopingCart(props) {
   const { shopingcart } = props;
@@ -19,6 +20,7 @@ function ShopingCart(props) {
   const [total, setTotal] = useState(0);
   const [promotion, setPromotion] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const updateOrderSummary = () => {
     let newSubpromotion = 0;
@@ -161,7 +163,9 @@ function ShopingCart(props) {
                   </tr>
                   <tr>
                     <td colSpan={2}>
-                      <button className="btn btn-dark w-100">
+                      <button className="btn btn-dark w-100" onClick={() => {
+                        navigate("/checkout");
+                      }}>
                         CONFIRM CART
                       </button>
                     </td>
@@ -204,7 +208,9 @@ function ShopingCart(props) {
               <div className="col-4 mt-2 ordersummary-mobile ordersummary-button-mobile">
                 <button
                   className="btn btn-dark w-100 ordersummary-button-mobile"
-                  style={{ fontSize: "0.8em" }}
+                  style={{ fontSize: "0.8em" }} onClick={() => {
+                    navigate("/checkout");
+                  }}
                 >
                   CONFIRM CART
                 </button>
