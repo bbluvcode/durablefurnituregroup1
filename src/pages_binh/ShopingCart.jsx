@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import RelatedProduct from "./components/RelatedProduct";
 import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
-import { updatenumberofproduct } from "../redux/reducers/shopReducer";
+import { updateDiscountVoucher, updatePromotion, updateShippingFee, updateTotal, updatenumberofproduct } from "../redux/reducers/shopReducer";
 import { useNavigate } from "react-router-dom";
+// import { SweetAlert2, Swal } from "sweetalert2-react-content";
+import Swal from 'sweetalert2'
 
 function ShopingCart(props) {
   const { shopingcart } = props;
@@ -29,13 +31,13 @@ function ShopingCart(props) {
 
     shopingcart.forEach((product) => {
       newSubpromotion += (product.price * product.discount) / 100;
-      newSubtotal += (product.price - newSubpromotion) * product.quantityInCart;
+      newSubtotal += product.price * product.quantityInCart;
       count += product.quantityInCart;
     });
 
     const newShippingFee = 0.005 * newSubtotal;
 
-    const newTotal = newSubtotal + newShippingFee;
+    const newTotal = newSubtotal - newSubpromotion + newShippingFee;
 
     setPromotion(newSubpromotion);
     setSubtotal(newSubtotal);
@@ -66,6 +68,13 @@ function ShopingCart(props) {
       setSuccess("");
     }
   };
+
+  const updatePayment = () => {
+    dispatch(updateTotal(total));
+    dispatch(updateShippingFee(shippingFee));
+    dispatch(updatePromotion(promotion));
+    dispatch(updateDiscountVoucher(discountVoucher));
+  }
 
   useEffect(() => {
     updateOrderSummary();
@@ -155,7 +164,7 @@ function ShopingCart(props) {
                     <td className="bold">Total</td>
                     <td className="right">
                       <strong>
-                      ${formatter.format(total - discountVoucher)}
+                        ${formatter.format(total - discountVoucher)}
                       </strong>
                     </td>
                   </tr>
@@ -172,7 +181,29 @@ function ShopingCart(props) {
                   <tr>
                     <td colSpan={2}>
                       <button className="btn btn-dark w-100" onClick={() => {
-                        navigate("/checkout");
+                        if (total === 0) {
+                          // alert("Please add the product to the cart.");
+                          Swal.fire({
+                            title: "Please add the product to the cart.",
+                            showClass: {
+                              popup: `
+                                animate__animated
+                                animate__fadeInUp
+                                animate__faster
+                              `
+                            },
+                            hideClass: {
+                              popup: `
+                                animate__animated
+                                animate__fadeOutDown
+                                animate__faster
+                              `
+                            }
+                          });
+                        } else {
+                          updatePayment();
+                          navigate("/checkout");
+                        }
                       }}>
                         CONFIRM CART
                       </button>
@@ -220,7 +251,29 @@ function ShopingCart(props) {
                 <button
                   className="btn btn-dark w-100 ordersummary-button-mobile px-0"
                   style={{ fontSize: "0.8em" }} onClick={() => {
-                    navigate("/checkout");
+                    if (total == 0) {
+                      // alert("Please add the product to the cart.");
+                      Swal.fire({
+                        title: "Please add the product to the cart.",
+                        showClass: {
+                          popup: `
+                            animate__animated
+                            animate__fadeInUp
+                            animate__faster
+                          `
+                        },
+                        hideClass: {
+                          popup: `
+                            animate__animated
+                            animate__fadeOutDown
+                            animate__faster
+                          `
+                        }
+                      });
+                    } else {
+                      updatePayment();
+                      navigate("/checkout");
+                    }
                   }}
                 >
                   CONFIRM CART

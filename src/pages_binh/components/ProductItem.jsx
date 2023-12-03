@@ -81,7 +81,7 @@ function ProductItem(props) {
                         $
                         {Math.round(
                           product.price -
-                            (product.discount * product.price) / 100
+                          (product.discount * product.price) / 100
                         )}
                       </span>
                     </div>
@@ -141,7 +141,6 @@ function ProductItem(props) {
                     const action = addToCartAction(productCart);
                     dispatch(action);
                     alertify.success("Added to cart successfully!");
-                    window.scrollTo(200, 350);
                   }}
                 >
                   <i className="fa fa-cart-plus"></i>

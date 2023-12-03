@@ -8,6 +8,7 @@ import React from "react";
 import Slider from "react-slick";
 import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import ProductBodyElement from "./ProductBodyElement";
+import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
 
 function Home({ products }) {
     const navigate = useNavigate();
@@ -188,34 +189,41 @@ function Home({ products }) {
                     </div>
                     <Slider className="col-md-12" {...settings}>
                         {products.filter((product) => product.isNew === true)
-                            .map(product => (
-                                <div className="col-md-3 mb-3 p-3 product-item">
-                                    <div className="new-product wrap-badgebyme">
-                                        <div className="badgebyme w-100 h-100">
-                                            <img src="img/logo/badge.png" alt="" className="w-100 h-100" />
-                                            <span className="new-badge"> NEW </span>
+                            .map(
+                                // product => (
+                                // <div className="col-md-3 mb-3 p-3 product-item">
+                                //     <div className="new-product wrap-badgebyme">
+                                //         <div className="badgebyme w-100 h-100">
+                                //             <img src="img/logo/badge.png" alt="" className="w-100 h-100" />
+                                //             <span className="new-badge"> NEW </span>
+                                //         </div>
+
+                                //     </div>
+
+                                //     <button className="row product-img border-0"
+                                //         onClick={() => navigate("/product-detail", { state: { key: product.name } })}>
+                                //         <img className="col-md-12 img-thumbnail w-100 h-100" src={product.image} alt="" />
+                                //     </button>
+                                //     <div className="row product-name py-3 text-center">
+                                //         <a className="col-md-12 product-link"
+                                //             onClick={() => navigate("/product-detail", { state: { key: product.name } })}> {product.name}</a>
+                                //     </div>
+                                //     <ProductBodyElement product={product} />
+                                //     <div className="row product-btn p-3">
+                                //         <ButtonsProductPage product={product} />
+                                //     </div>
+                                // </div>                            )
+                                product => {
+                                    return (
+                                        <div
+                                          className="col-6 col-lg-3 col-md-3 productitem-cart"
+                                          key={product.pid}
+                                        >
+                                          <ProductItemMainpage product={product} />
                                         </div>
-
-                                    </div>
-
-                                    <button className="row product-img border-0"
-                                        onClick={() => navigate("/product-detail", { state: { key: product.name } })}>
-                                        <img className="col-md-12 img-thumbnail w-100 h-100" src={product.image} alt="" />
-                                    </button>
-                                    <div className="row product-name py-3 text-center">
-                                        <a className="col-md-12 product-link"
-                                            onClick={() => navigate("/product-detail", { state: { key: product.name } })}> {product.name}</a>
-                                    </div>
-                                    <ProductBodyElement product={product} />
-                                    <div className="row product-btn p-3">
-                                        <ButtonsProductPage product={product} />
-
-                                    </div>
-                                </div>
-
-
-
-                            ))}
+                                      );
+                                }
+                            )}
 
                     </Slider>
 
@@ -293,17 +301,17 @@ function Home({ products }) {
 
                         </h3>
                         <p className="post-desc">
-                        Whether it's the living room, bedroom, dining room or office, decorative lights [...]
+                            Whether it's the living room, bedroom, dining room or office, decorative lights [...]
                         </p>
                     </div>
                     <div className="col-md-6 h-100">
                         <img src="img/img_product/img3.1.png" className="img-post" alt="" />
                         <h3 className="post-title my-3">
 
-                        THE ART OF CHOOSING DECORATIVE LIGHTS FOR MODERN SPACES
+                            THE ART OF CHOOSING DECORATIVE LIGHTS FOR MODERN SPACES
                         </h3>
                         <p className="post-desc">
-                        Decorative lights are not only a source of light for the home, but also [...]
+                            Decorative lights are not only a source of light for the home, but also [...]
                         </p>
                     </div>
                 </Slider>

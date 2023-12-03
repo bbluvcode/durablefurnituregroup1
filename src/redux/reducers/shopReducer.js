@@ -10,6 +10,7 @@ const initialState = {
   compareitem3: null,
   numberofproduct: 0,
   wishList: [],
+  total: 0, shippingFee: 0, promotion: 0, discountVoucher: 0,
 };
 
 const shopReducer = createSlice({
@@ -34,6 +35,9 @@ const shopReducer = createSlice({
       state.shopingcart = state.shopingcart.filter(
         (product) => product.pid !== pid
       );
+    },
+    emptyCart: (state, action) => {
+      state.shopingcart = [];
     },
 
     changeQuantity: (state, action) => {
@@ -86,6 +90,19 @@ const shopReducer = createSlice({
       const pid = action.payload;
       state.wishList = state.wishList.filter((product) => product.pid !== pid);
     },
+
+    updateTotal: (state, action) => {
+      state.total = action.payload
+    },
+    updateShippingFee: (state, action) => {
+      state.shippingFee = action.payload
+    },
+    updatePromotion: (state, action) => {
+      state.promotion = action.payload
+    },
+    updateDiscountVoucher: (state, action) => {
+      state.discountVoucher = action.payload
+    },
   },
 });
 
@@ -93,6 +110,7 @@ export const {
   getProductsApiAction,
   addToCartAction,
   delProductInCart,
+  emptyCart,
   changeQuantity,
   addToCompare,
   changeProductToCompare,
@@ -102,6 +120,10 @@ export const {
   updatenumberofproduct,
   addToWishListAction,
   delProductInWishList,
+  updateTotal,
+  updateShippingFee,
+  updatePromotion,
+  updateDiscountVoucher
 } = shopReducer.actions;
 
 export default shopReducer.reducer;
@@ -115,6 +137,6 @@ export const getAllProductApi = () => {
       });
       const action = getProductsApiAction(result.data);
       dispatch(action);
-    } catch (err) {}
+    } catch (err) { }
   };
 };

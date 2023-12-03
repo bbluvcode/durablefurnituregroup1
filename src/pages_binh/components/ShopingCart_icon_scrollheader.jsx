@@ -1,12 +1,7 @@
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 export default function ShopingCart_icon_scrollheader(props) {
-  const { numberofproduct } = useSelector((state) => state.shopReducer);
-
-  useEffect(() => {
-    console.log("state:", numberofproduct);
-  }, [numberofproduct]); // Thêm dependency array để chỉ chạy useEffect khi numberofproduct thay đổi
+  const { numberofproduct } = useSelector(state => state.shopReducer);
 
   return (
     <div className="btn btn-outline-dark">

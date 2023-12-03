@@ -1,27 +1,50 @@
 import React from 'react'
 import { NavLink } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { format, addDays } from 'date-fns';
+import { emptyCart } from '../redux/reducers/shopReducer';
 
-export default function CheckOut({ subtotal, shippingFee, promotion, discountVoucher}) {
+
+export default function CheckOut() {
+    const { total, shippingFee, promotion, discountVoucher } = useSelector(state => state.shopReducer)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const formatter = new Intl.NumberFormat("en-US", {
+        style: "decimal",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+    });
+
+    const estimatedDeliveryDate = addDays(new Date(), 5);
+    const formattedDeliveryDate = format(estimatedDeliveryDate, 'd MMMM, yyyy');
+
     return (
         <div className="container container-binh bg-light d-md-flex align-items-center">
             <div className="card box1 shadow-sm p-md-5 p-md-5 p-4">
                 <div className="fw-bolder mb-4">
                     <span className="fas fa-dollar-sign" />
-                    <span className="ps-1">1170,00</span>
+                    <span className="ps-1">{formatter.format(total)}</span>
                 </div>
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-between text-binh">
-                        <span className>Commission</span>
+                        <span>Subtotal</span>
                         <span className="fas fa-dollar-sign">
-                            <span className="ps-1">30</span>
+                            <span className="ps-1">{formatter.format(promotion + discountVoucher + total + shippingFee)}</span>
                         </span>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between text-binh mb-4">
-                        <span>Total</span>
+                    {(promotion + discountVoucher) > 0 && (<div className="d-flex align-items-center justify-content-between text-binh">
+                        <span className>Total discount</span>
                         <span className="fas fa-dollar-sign">
-                            <span className="ps-1">1200</span>
+                            <span className="ps-1">{formatter.format(promotion + discountVoucher)}</span>
+                        </span>
+                    </div>)}
+                    
+                    <div className="d-flex align-items-center justify-content-between text-binh mb-2">
+                        <span className>Total shipping fee</span>
+                        <span className="fas fa-dollar-sign">
+                            <span className="ps-1">{formatter.format(shippingFee)}</span>
                         </span>
                     </div>
                     <div className="border-bottom mb-4" />
@@ -29,20 +52,22 @@ export default function CheckOut({ subtotal, shippingFee, promotion, discountVou
                         <span className="far fa-file-alt text-binh">
                             <span className="ps-2">Invoice ID:</span>
                         </span>
-                        <span className="ps-3">T12308A0</span>
+                        <span className="ps-3">2308A0</span>
                     </div>
                     <div className="d-flex flex-column mb-5">
                         <span className="far fa-calendar-alt text-binh">
-                            <span className="ps-2">Next payment:</span>
+                            <span className="ps-2">Estimated delivery:</span>
                         </span>
-                        <span className="ps-3">6 december, 2023</span>
+                        <span className="ps-3">{formattedDeliveryDate}</span>
                     </div>
                     <div className="d-flex align-items-center justify-content-between text-binh mt-5">
                         <div className="d-flex flex-column text-binh">
                             <span>Customer Support:</span>
                             <span>online chat 24/7</span>
                         </div>
-                        <div className="btn btn-primary rounded-circle">
+                        <div className="btn btn-primary rounded-circle" onClick={()=>{
+                            navigate("/contact")
+                        }}>
                             <span style={{ "color": "#3b3a3a" }} className="fas fa-comment-alt" />
                         </div>
                     </div>
@@ -87,7 +112,7 @@ export default function CheckOut({ subtotal, shippingFee, promotion, discountVou
                                 <div className="inputWithIcon">
                                     <input className="form-control" type="text-binh" defaultValue="4619 3000 5678 1234" />
                                     <span className>
-                                        <img className='img-master' src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png" alt='logomastercard' />
+                                        <img className='img-visa' src="img/logo/visalogo.png" alt='logvisa' />
                                     </span>
                                 </div>
                             </div>
@@ -122,8 +147,9 @@ export default function CheckOut({ subtotal, shippingFee, promotion, discountVou
                         </div>
                         <div className="col-12 px-md-5 px-4 mt-3">
                             <button onClick={() => {
+                                dispatch(emptyCart());
                                 navigate("/checkoutsuccess")
-                            }} className="btn btn-primary w-100">Pay $1170</button>
+                            }} className="btn btn-primary w-100">Pay {formatter.format(total)}</button>
                         </div>
                     </div>
                 </form>
