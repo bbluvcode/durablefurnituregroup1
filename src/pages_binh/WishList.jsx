@@ -13,7 +13,7 @@ export default function WishList(props) {
     <div className="container">
       <div className="row py-10">
         <div className="col-md-12">
-          <h2>
+          <h2 className="underLine">
             Your Wish List <b></b>
           </h2>
           <div>
@@ -27,7 +27,10 @@ export default function WishList(props) {
                   ) : (
                     wishList.map((product, index) => {
                       return (
-                        <div className="col-sm-3 mb-3" key={index}>
+                        <div
+                          className="col-6 col-lg-3 col-md-3 productitem-cart"
+                          key={product.pid}
+                        >
                           <ProductItem product={product} />
                         </div>
                       );

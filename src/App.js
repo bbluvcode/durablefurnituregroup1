@@ -31,6 +31,7 @@ import Inspiration from "./pages_kanh/Inspiration.jsx";
 import Inspiration4 from "./pages_kanh/Inspiration4.jsx";
 import CheckOut from "./pages_binh/CheckOut.jsx";
 import CheckOutSuccess from "./pages_binh/CheckOutSuccess.jsx";
+import RelatedProduct from "./pages_binh/components/RelatedProduct.jsx";
 
 function App() {
   const linkHome = "/";
@@ -111,6 +112,7 @@ console.log(products);
         <Route path="/register" element={<Register users={users} />} />
         <Route path="/login" element={<Login users={users} />} />
         <Route path="/wishlist" element={<WishList wishList={wishList} />} />
+        <Route path="/youmayalsolike" element={<RelatedProduct wishList={wishList} />} />
 
         <Route path={linkInspiration} element={<Inspiration/>}/>
         <Route path={linkInspiration1} element={<Inspiration1 />} />

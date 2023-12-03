@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCartAction, addToCompare } from "../redux/reducers/shopReducer";
 import alertify from "alertifyjs";
 import { useNavigate } from "react-router-dom";
+import ProductItem from "./components/ProductItem";
 
 export default function ProductSearch(props) {
   const { dataProductSearch } = useSelector((state) => state.shopReducer);
@@ -18,7 +19,7 @@ export default function ProductSearch(props) {
     <div className="container">
       <div className="row py-10">
         <div className="col-md-12">
-          <h2>
+          <h2 className="underLine">
             Search Result <b></b>
           </h2>
           <div>
@@ -31,92 +32,15 @@ export default function ProductSearch(props) {
                     </Alert>
                   )}
                   {dataProductSearch.map((product, index) => {
-                    const shortenedName =
-                      product.name.length > 20
-                        ? `${product.name.slice(0, 15)}...`
-                        : product.name;
                     return (
-                      <div className="col-sm-3 mb-3" key={index}>
-                        <div className="thumb-wrapper card pb-3">
-                          <span className="wish-icon">
-                            <i className="fa fa-heart-o" />
-                          </span>
-                          <div className="img-box">
-                            <img
-                              src={product.image}
-                              className="img-responsive"
-                              alt=""
-                              onClick={() =>
-                                navigate("/product-detail", {
-                                  state: { key: product.name },
-                                })
-                              }
-                              style={{
-                                border: "none",
-                                background: "white",
-                                cursor: "pointer",
-                              }}
-                            />
-                          </div>
-                          <div className="thumb-content px-3">
-                            <h4
-                              onClick={() =>
-                                navigate("/product-detail", {
-                                  state: { key: product.name },
-                                })
-                              }
-                              style={{
-                                border: "none",
-                                background: "white",
-                                cursor: "pointer",
-                              }}
-                            >
-                              {shortenedName}
-                            </h4>
-                            <p className="item-price">
-                              <strike>
-                                ${Math.round(product.price * 1.2)}
-                              </strike>{" "}
-                              <span>${product.price}</span>
-                            </p>
-                            <div className="star-rating">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <i className="fa fa-star" />
-                                </li>
-                                <li className="list-inline-item">
-                                  <i className="fa fa-star" />
-                                </li>
-                                <li className="list-inline-item">
-                                  <i className="fa fa-star" />
-                                </li>
-                                <li className="list-inline-item">
-                                  <i className="fa fa-star" />
-                                </li>
-                                <li className="list-inline-item">
-                                  <i className="fa fa-star-o" />
-                                </li>
-                              </ul>
-                            </div>
-                            <NavLink
-                              to="#"
-                              className="btn btn-dark text-white"
-                              onClick={() => {
-                                const productCart = {
-                                  ...product,
-                                  quantityInCart: 1,
-                                };
-                                const action = addToCartAction(productCart);
-                                dispatch(action);
-                                alertify.success("Added to cart successfully!");
-                              }}
-                            >
-                              Add to Cart
-                            </NavLink>
-                          </div>
-                        </div>
+                      <div
+                        className="col-6 col-lg-3 col-md-3 productitem-cart"
+                        key={product.pid}
+                      >
+                        <ProductItem product={product} />
                       </div>
                     );
+                    
                   })}
                 </div>
               </div>

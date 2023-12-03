@@ -109,7 +109,7 @@ function ShopingCart(props) {
           <div className="col-lg-5 col-md-5 order_summary">
             <div className="order_info card p-4" id="order_info">
               <div className="container mt-0">
-                <h2 className="mt-0">Order Summary</h2>
+                <h2 className="mt-0 underLine">Order Summary</h2>
                 <table className="w-100 ">
                   <tr>
                     <td>Subtotal({productCount} items)</td>

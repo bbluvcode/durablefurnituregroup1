@@ -11,7 +11,7 @@ export default function Confirm() {
           <div className="row">
             <div className="col-md-12 text-center">
               <span className="icon-check_circle display-3 text-success" />
-              <h2 className="display-3 text-black">Register Successfully!</h2>
+              <h2 className="display-3 text-black underLine">Register Successfully!</h2>
               <p className="lead mb-5">
                 We have sent you a confirm email from bbluvcode@gmail.com
               </p>
