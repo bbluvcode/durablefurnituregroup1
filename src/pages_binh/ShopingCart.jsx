@@ -43,9 +43,7 @@ function ShopingCart(props) {
     setProductCount(count);
     setShippingFee(newShippingFee);
     setTotal(newTotal);
-    // if (count != 0) {
-    //   dispatch(updatenumberofproduct(productCount));
-    // }
+
     dispatch(updatenumberofproduct(count));
   };
 
@@ -163,7 +161,7 @@ function ShopingCart(props) {
                     <td className="bold">Total</td>
                     <td className="right">
                       <strong>
-                        ${formatter.format(total - discountVoucher)}
+                        ${formatter.format(total)}
                       </strong>
                     </td>
                   </tr>
@@ -250,7 +248,7 @@ function ShopingCart(props) {
                 <button
                   className="btn btn-dark w-100 ordersummary-button-mobile px-0"
                   style={{ fontSize: "0.8em" }} onClick={() => {
-                    if (total == 0) {
+                    if (total === 0) {
                       // alert("Please add the product to the cart.");
                       Swal.fire({
                         title: "Please add the product to the cart.",

@@ -15,7 +15,7 @@ import ShopingCart_float from "./components/ShopingCart_float";
 
 function Header(props) {
   const { shopingcart } = props;
-  const numberphone = " 09.xxx.xxx.xx";
+  const numberphone = " 0939966602";
   const linkProduct = "/product";
   const linkBrandname = "/brand";
   const linkRoom = "/room";

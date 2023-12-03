@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Alert, NavLink } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addToCartAction, addToCompare } from "../redux/reducers/shopReducer";
-import alertify from "alertifyjs";
 import { useNavigate } from "react-router-dom";
 import ProductItem from "./components/ProductItem";
 
 export default function ProductSearch(props) {
   const { dataProductSearch } = useSelector((state) => state.shopReducer);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(dataProductSearch);
@@ -35,7 +31,6 @@ export default function ProductSearch(props) {
                     return (
                       <div
                         className="col-6 col-lg-3 col-md-3 productitem-cart"
-                        key={product.pid}
                       >
                         <ProductItem product={product} />
                       </div>
