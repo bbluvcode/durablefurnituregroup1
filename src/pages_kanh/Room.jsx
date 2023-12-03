@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import ProductBodyElement from "../pages_bao/ProductBodyElement";
 import { useNavigate } from "react-router-dom";
+import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
 function Room({ products }) {
     console.log(products);
     const navigate = useNavigate();
@@ -52,28 +53,13 @@ function Room({ products }) {
                         <Slider className="col-md-12" {...settings}>
                             {products.filter((product) => product.room === room)
                                 .map(product => (
-                                    <div className="col-md-3 mb-3 p-3 product-item">
-                                        <button className="row product-img border-0"
-                                            onClick={() => navigate("/product-detail", { state: { key: product.name } })}>
-                                            <img className="col-md-12 img-thumbnail w-100 h-100" src={product.image} alt={product.name} />
-                                        </button>
-                                        <div className="row product-name py-3 text-center">
-                                            <a className="col-md-12 product-link"
-                                                onClick={() => navigate("/product-detail", { state: { key: product.name } })}
-                                            > {product.name}</a>
-                                        </div>
-                                        <ProductBodyElement product={product} />
-
-
-                                        <div className="row product-btn p-3">
-                                            <ButtonsProductPage product={product} />
-                                        </div>
-
-
-
-
-                                    </div>
-
+                                    <div
+                                    className="col-6 col-lg-4 col-md-3 productitem-cart"
+                                    key={product.pid}
+                                >
+                                    <ProductItemMainpage product={product} />
+                                </div>
+        
 
 
                                 ))}
