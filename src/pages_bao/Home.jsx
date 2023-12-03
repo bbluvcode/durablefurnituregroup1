@@ -112,7 +112,7 @@ function Home({ products }) {
                             </button>
                             <button className="col-md-3 room-btn border-0 p-0"
                                 onClick={() => navigate(`/filterRoom`, { state: { key: "KidRoom" } })}>
-                                <img src="img/logo/kidroom.png" alt="" className='h-100 w-100' />
+                                <img src="./img/logo/kidroom.png" alt="" className='h-100 w-100' />
                             </button>
                         </div>
                         <div className="row mt-3 w-100">
