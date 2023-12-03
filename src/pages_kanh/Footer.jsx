@@ -18,20 +18,20 @@ function Footer() {
             <div className="footer-menu">
 
               <ul id="menu-get-started" className="footer-menu-list mobile-hide" style={{ width: "100px", margin: "auto" }}>
-              <h2 className="footer-call-to-action-title">Work time</h2>
+                <h2 className="footer-call-to-action-title">Work time</h2>
 
                 <li className="">
-                <div class="footer__time">
+                  <div class="footer__time">
                     <p>Mon - Friday</p>
                     <p>9h30 - 18h30</p>
-                </div>                
+                  </div>
                 </li>
-                <li className="">                
-                <div class="footer__time">
+                <li className="">
+                  <div class="footer__time">
                     <p>Sat - Sunday </p>
                     <p>9h30 - 18h30</p>
-                </div>
-                
+                  </div>
+
                 </li>
               </ul>
             </div>

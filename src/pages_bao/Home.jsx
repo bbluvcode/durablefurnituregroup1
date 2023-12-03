@@ -77,23 +77,51 @@ function Home({ products }) {
         ]
     };
     return (
-        <div className="home-page">
+        <div className="home-page container-fluid mx-0 px-0">
 
-            <div className="container mb-4 pb-5 banner">
+            <div className="mb-4 pb-5 banner mx-0 px-0">
                 {/* BEGIN BANNER SECTION */}
-                <div className="row">
-                    <div className="col-md-12 banner-home">
-                        <img src="img/logo/Banner_home.png" alt="" />
-                    </div>
+                <div className="banner-home">
+                    <img style={{ width: "100%" }} src="img/logo/Banner_home.png" alt="" />
                 </div>
             </div>
             {/* END BANNER */}
-            <div className="container mb-4 pb-5 border-bottom">
+
+            {/* BEGIN NEW PRODUCT CAROUSEL */}
+            <div className="container mb-5 pb-5 border-bottom">
+                <div className="row pb-3">
+                    <div className="col-md-12 my-3">
+                        <h3 className='text-bold text-center title-home-binh'> NEW PRODUCT</h3>
+                    </div>
+                    <Slider className="col-md-12" {...settings}>
+                        {products.filter(function (product) { return product.isNew === true }).map(
+                            product => {
+                                return (
+                                    <div
+                                        className="col-6 col-lg-3 col-md-3 productitem-cart"
+                                        key={product.pid}
+                                    >
+                                        <ProductItemMainpage product={product} />
+                                    </div>
+                                );
+                            }
+                        )}
+
+                    </Slider>
+
+                </div>
+
+            </div>
+            {/* END NEW PRODUCT CAROUSEL */}
+
+
+            <div className="container-fluid mb-4  border-bottom">
 
                 {/* BEGIN ROOMIMGLINK */}
-                <div className="row mb-4 border-bottom pb-5">
+                <div className="row border-bottom">
                     <div className="col-md-12">
-                        <h3 className="text-center my-4 text-center"> ROOM </h3>
+                        <h3 className="text-center my-4 title-home-binh" > ROOM </h3>
+                        <div className="underLineNoAfter"></div>
                     </div>
                     <div className="col-md-12 mt-3 room-group">
                         <div className="row w-100">
@@ -140,62 +168,83 @@ function Home({ products }) {
                 {/* END ROOMIMGLINK */}
 
                 {/* BEGIN BEST SELLER */}
-                <div className="row mt-5 border-bottom best-seller">
-                    <div className="col-md-12 pt-3">
-                        <h3 className='text-bold pb-3 text-center'> BEST SELLER </h3>
-                        <div className="row no-gutter">
-                            {products.filter(function (product) { return product.isBest === true }).map(
-                                product => {
-                                    return (
-                                        <div
-                                            className="col-6 col-lg-3 col-md-3 productitem-cart"
-                                            key={product.pid}
-                                        >
-                                            <ProductItemMainpage product={product} />
-                                        </div>
-                                    );
-                                }
-                            )}
+                <div className="container">
 
+
+                    <div className="row mt-5 border-bottom best-seller">
+                        <div className="col-md-12 pt-3">
+                            <h3 className='text-bold text-center title-home-binh'> BEST SELLER </h3>
+                            <div className="row no-gutter">
+                                {products.filter(function (product) { return product.isBest === true }).map(
+                                    product => {
+                                        return (
+                                            <div
+                                                className="col-6 col-lg-3 col-md-3 productitem-cart"
+                                                key={product.pid}
+                                            >
+                                                <ProductItemMainpage product={product} />
+                                            </div>
+                                        );
+                                    }
+                                )}
+
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div></div>
 
                 {/* END BEST SELLER */}
 
             </div>
-            {/* BEGIN NEW PRODUCT CAROUSEL */}
-            <div className="container mb-5 pb-5 border-bottom">
-                <div className="row pb-3">
-                    <div className="col-md-12 my-3">
-                        <h3 className='text-bold text-center'> NEW PRODUCT</h3>
+
+            {/* BEGIN INSPIRATION CORNER */}
+
+            <div className="container my-5">
+                <div className="row my-5">
+                    <div className="col-md-12 text-center title-home-binh">
+                        <h3> INSPIRATION CORNER </h3>
                     </div>
-                    <Slider className="col-md-12" {...settings}>
-                        {products.filter(function (product) { return product.isNew === true }).map(
-                            product => {
-                                return (
-                                    <div
-                                        className="col-6 col-lg-3 col-md-3 productitem-cart"
-                                        key={product.pid}
-                                    >
-                                        <ProductItemMainpage product={product} />
-                                    </div>
-                                );
-                            }
-                        )}
-
-                    </Slider>
-
                 </div>
+                <Slider className="col-md-12 row text-center" {...setting1s}>
+                    <button className="col-md-6 h-100 border-0"
+                        onClick={() => navigate('inspiration4')}>
+                        <img src="img/logo/post1.jpg" alt="" className="img-post" />
+                        <h3 className="post-title my-3">
+                            Create a quality dining room with 5 simple ways
+                        </h3>
+                        <p className="post-desc">
+                            The dining room is the connection and relaxation space of every family, where [...]
+                        </p>
+                    </button>
+                    <button className="col-md-6 h-100 border-0"
+                        onClick={() => navigate("inspiration2")}>
+                        <img src="img/img_product/img2.png" className="img-post" alt="" />
+                        <h3 className="post-title my-3">
+                            HOW TO CHOOSE DECORATIVE LIGHTS
 
+
+                        </h3>
+                        <p className="post-desc">
+                            Whether it's the living room, bedroom, dining room or office, decorative lights [...]
+                        </p>
+                    </button>
+                    <button className="col-md-6 h-100 border-0"
+                        onClick={() => navigate('inspiration3')}>
+                        <img src="img/img_product/img3.1.png" className="img-post" alt="" />
+                        <h3 className="post-title my-3">
+
+                            THE ART OF CHOOSING DECORATIVE LIGHTS FOR MODERN SPACES
+                        </h3>
+                        <p className="post-desc">
+                            Decorative lights are not only a source of light for the home, but also [...]
+                        </p>
+                    </button>
+                </Slider>
             </div>
-            {/* END NEW PRODUCT CAROUSEL */}
-
             {/* BEGIN BRAND SECTION */}
             <div className="container brand-section mb-4 border-bottom">
                 <div className="row ">
                     <div className="col-md-12">
-                        <h3 className="text-center"> BRAND </h3>
+                        <h3 className="text-center title-home-binh"> BRAND </h3>
                     </div>
                 </div>
                 <div className="row p-3 row-list">
@@ -233,51 +282,6 @@ function Home({ products }) {
             </div>
             {/* END BRAND SECTION */}
 
-
-            {/* BEGIN INSPIRATION CORNER */}
-
-            <div className="container my-5">
-                <div className="row my-5">
-                    <div className="col-md-12 text-center">
-                        <h3> INSPIRATION CORNER </h3>
-                    </div>
-                </div>
-                <Slider className="col-md-12 row text-center" {...setting1s}>
-                    <button className="col-md-6 h-100 border-0"
-                    onClick={()=>navigate('inspiration4')}>
-                        <img src="img/logo/post1.jpg" alt="" className="img-post" />
-                        <h3 className="post-title my-3">
-                            Create a quality dining room with 5 simple ways
-                        </h3>
-                        <p className="post-desc">
-                            The dining room is the connection and relaxation space of every family, where [...]
-                        </p>
-                    </button>
-                    <button className="col-md-6 h-100 border-0"
-                    onClick={()=> navigate("inspiration2")}>
-                        <img src="img/img_product/img2.png" className="img-post" alt="" />
-                        <h3 className="post-title my-3">
-                            HOW TO CHOOSE DECORATIVE LIGHTS
-
-
-                        </h3>
-                        <p className="post-desc">
-                            Whether it's the living room, bedroom, dining room or office, decorative lights [...]
-                        </p>
-                    </button>
-                    <button className="col-md-6 h-100 border-0" 
-                    onClick={()=>navigate('inspiration3')}>
-                        <img src="img/img_product/img3.1.png" className="img-post" alt="" />
-                        <h3 className="post-title my-3">
-
-                            THE ART OF CHOOSING DECORATIVE LIGHTS FOR MODERN SPACES
-                        </h3>
-                        <p className="post-desc">
-                            Decorative lights are not only a source of light for the home, but also [...]
-                        </p>
-                    </button>
-                </Slider>
-            </div>
         </div>
 
     )

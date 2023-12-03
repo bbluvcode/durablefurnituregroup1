@@ -1,25 +1,23 @@
 
 .home-page {
   border-bottom: 1px solid #ccc;
-  margin-top: 30px;
 } 
+
 .home-page .banner {
   border-bottom: 1px solid #ccc;
 }
 .banner-home img {
   max-width: 100%;
   height: 100%;
-
   margin: 0px auto;
   display: block;
   
 }
 
 .room-home {
-  border-bottom: 1px solid #ccc !important;
-
-  
+  border-bottom: 1px solid #ccc !important;  
 }
+
 .room-group {
   padding-right: 0px;
 }

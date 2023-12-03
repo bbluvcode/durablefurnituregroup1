@@ -60,10 +60,7 @@ function ShopingCartItem({ product, index, updateOrderSummary }) {
           <div className="row d-flex justify-content-between">
             <div className="col-6">
               <b className="card-text">Price: {product.price}$</b>
-              <p className="card-text mb-0 mt-2 d-flex">
-                <WishListItemDetail product={product} />
-                {/* <span className="ms-1">Add to wishlist</span> */}
-              </p>
+              
             </div>
             <div className="col-6 btn-quantotal">
               <button
@@ -93,6 +90,12 @@ function ShopingCartItem({ product, index, updateOrderSummary }) {
                 -
               </button>
             </div>
+            <div className="col-12">
+            <p className="card-text mb-0 mt-2 d-flex">
+                <WishListItemDetail product={product} />
+              </p>
+            </div>
+            
           </div>
         </div>
       </div>

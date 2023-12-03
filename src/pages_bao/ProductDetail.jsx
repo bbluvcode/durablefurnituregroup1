@@ -279,7 +279,7 @@ function ProductDetail({ products }) {
                     className="col-6 col-lg-4 col-md-3 productitem-cart"
                     key={product.pid}
                   >
-                    <ProductItemMainpage product={product} />
+                    <ProductItemMainpage product={item} />
                   </div>
 
                 ))}

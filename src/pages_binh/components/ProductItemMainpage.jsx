@@ -14,12 +14,10 @@ function ProductItemMainpage(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [stars, setStars] = useState([1,2,3,4,5]);
-  
-
+  const [stars, setStars] = useState([1, 2, 3, 4, 5]);
 
   return (
-    <div className="">
+    <div className="binh-father-card">      
       <div className="card text-start mt-4">
         {product.isBest && (
           <div className="best-sell wrap-badgebyme">
@@ -109,53 +107,14 @@ function ProductItemMainpage(props) {
                         <i className="fa fa-star" />
                       </li>
                     ))
-
                     }
-
-
-                    {/* <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star-o" />
-                    </li> */}
                   </ul>
                 </div>
               </span>
-            </div>
+            </div>    
 
-            <div className="row mt-1  button-product">
-              <div className="col-3 col-md-12 col-lg-12 p-0">
-                <button
-                  className="btn btn-outline-dark w-100 btn-productitem"
-                  onClick={() => {
-                    dispatch(addToCompare(product));
-                    navigate("/compare");
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  <i className="fa fa-exchange-alt icon-compare-mobile"></i>
-                  <span className="span_binh ms-1">Add to compare</span>
-                </button>
-              </div>
-
-              <div className="col-9 col-md-12 col-lg-12 p-0">
+            <div className="row mt-1 button-product  binh-home-hide">
+            <div className="col-9 col-md-12 col-lg-12 p-0">
                 <button
                   style={{ border: "solid 1px " }}
                   className="btn btn-dark w-100 btn-productitem"
@@ -171,6 +130,21 @@ function ProductItemMainpage(props) {
                   <span className="span_binh_mobile ms-1">Add to cart</span>
                 </button>
               </div>
+              <div className="col-3 col-md-12 col-lg-12 p-0">
+                <button
+                  className="btn btn-outline-dark w-100 btn-productitem"
+                  onClick={() => {
+                    dispatch(addToCompare(product));
+                    navigate("/compare");
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  <i className="fa fa-exchange-alt icon-compare-mobile"></i>
+                  <span className="span_binh ms-1">Add to compare</span>
+                </button>
+              </div>
+
+              
             </div>
           </div>
         </div>

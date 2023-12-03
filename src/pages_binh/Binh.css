@@ -333,7 +333,7 @@ td {
 }
 
 .pagination {
-  font-family: "Ubuntu", sans-serif;
+  font-family: Ubuntu, sans-serif;
   display: inline-flex;
   position: relative;
 }
@@ -433,6 +433,7 @@ h2 {
   right: 0;
   bottom: -20px;
 }
+
 
 .form-input-search {
   display: none;
@@ -1019,10 +1020,10 @@ form .btn.btn-primary:hover {
 }
 
 
-.footer__time > p{
- /* padding: 0; */
- margin: 0;
- font-size: 14px;
+.footer__time>p {
+  /* padding: 0; */
+  margin: 0;
+  font-size: 14px;
 }
 
 
@@ -1599,4 +1600,25 @@ form .btn.btn-primary:hover {
   .table__detail-cart table tr {
     grid-template-columns: 1fr 10rem 10rem;
   }
+}
+
+/* -----------------SUPPORT TEAM-------------------- */
+.title-home-binh {
+  width: 200px;
+  border-bottom: solid 4px #3b3a3a;
+  margin: auto;
+  padding-bottom: 0.5em;
+}
+
+.binh-father-card {
+  position: relative;
+} 
+.binh-home-hide {
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+
+.binh-father-card:hover .binh-home-hide {
+  display: flex;
 }

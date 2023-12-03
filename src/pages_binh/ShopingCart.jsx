@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { updateDiscountVoucher, updatePromotion, updateShippingFee, updateTotal, updatenumberofproduct } from "../redux/reducers/shopReducer";
 import { useNavigate } from "react-router-dom";
-// import { SweetAlert2, Swal } from "sweetalert2-react-content";
 import Swal from 'sweetalert2'
 
 function ShopingCart(props) {

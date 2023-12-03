@@ -45,27 +45,28 @@ function RelatedProduct(props) {
             </div>
           );
         })}
-      </div>
-      <div className="pagination-outer">
-        <ReactPaginate
-          previousLabel={"«"}
-          nextLabel={"»"}
-          pageCount={pageCount}
-          marginPagesDisplayed={5}
-          pageRangeDisplayed={3}
-          onPageChange={handlePageClick}
-          containerClassName={"pagination pagination-outer mt-5"}
-          pageClassName={"page-item"}
-          pageLinkClassName={"page-link"}
-          previousClassName={"page-item"}
-          nextClassName={"page-item"}
-          previousLinkClassName={"page-link"}
-          nextLinkClassName={"page-link"}
-          activeClassName={"active"}
-          onClick={() => {
-            window.scrollTo(200, 350);
-          }}
-        />
+
+        <div className="pagination-outer">
+          <ReactPaginate
+            previousLabel={"«"}
+            nextLabel={"»"}
+            pageCount={pageCount}
+            marginPagesDisplayed={5}
+            pageRangeDisplayed={3}
+            onPageChange={handlePageClick}
+            containerClassName={"pagination pagination-outer mt-5"}
+            pageClassName={"page-item"}
+            pageLinkClassName={"page-link"}
+            previousClassName={"page-item"}
+            nextClassName={"page-item"}
+            previousLinkClassName={"page-link"}
+            nextLinkClassName={"page-link"}
+            activeClassName={"active"}
+            onClick={() => {
+              window.scrollTo(200, 350);
+            }}
+          />
+        </div>
       </div>
       <div className="row product-mobile">
         {dataProduct.map((product) => {
