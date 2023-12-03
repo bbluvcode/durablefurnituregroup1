@@ -12,15 +12,11 @@ function Compare() {
           <div className="col compare-item">
             <CompareItem />
           </div>
-          {/* <div className="col-1 text-center compare-icon iconcompare">
-                        <i class="fab fa-xing" style={{ 'fontSize': '1em' }}></i>
-                    </div> */}
+
           <div className="col compare-item">
             <CompareItem2 />
           </div>
-          {/* <div className="col-1 text-center compare-icon iconcompare">
-                        <i class="fab fa-xing" style={{ 'fontSize': '1em' }}></i>
-                    </div> */}
+
           <div className="col compare-item">
             <CompareItem3 />
           </div>

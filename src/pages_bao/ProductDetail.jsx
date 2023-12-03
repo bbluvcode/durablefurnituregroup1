@@ -9,13 +9,15 @@ import Slider from "react-slick";
 import * as React from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
-import StarIcon from "@mui/icons-material/Star";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import "./ProductDetail.css"
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import ButonsProductDetailPage from "../pages_binh/button/ButonsProductDetailPage";
 import ProductBodyElement from "./ProductBodyElement";
-
+import Typography from '@mui/material/Typography';
 function ProductDetail({ products }) {
   let location = useLocation();
   let name = location.state.key;
@@ -25,6 +27,11 @@ function ProductDetail({ products }) {
   const navigate = useNavigate();
   const productArr = products.filter((product) => product.name === name);
   console.log(productArr);
+
+  let reviewArr = productArr[0].review;
+  console.log(reviewArr);
+
+
 
   const [imgUrl, setImgUrl] = useState("");
   useEffect(() => {
@@ -65,47 +72,72 @@ function ProductDetail({ products }) {
     ],
   };
 
-  const [quantity, setQuantity] = useState(1);
-  const labels = {
-    0.5: "Very Bad",
-    1: "Very Bad",
-    1.5: "Very Bad",
-    2: "Bad",
-    2.5: "Bad",
-    3: "Fine",
-    3.5: "Fine",
-    4: "Good",
-    4.5: "Good",
-    5: "Very Good",
-  };
+  const id = productArr[0].id;
 
-  function getLabelText(value) {
-    return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
+
+  const [value, setValue] = useState(5);
+  // const [hover, setHover] = useState(-1);
+
+  const [comment, setComment] = useState("");
+
+  var isLogin = sessionStorage.getItem("islogin");
+  console.log(isLogin);
+  var username = sessionStorage.getItem("username");
+  console.log(username);
+
+  const handleComment = (e) => {
+    e.preventDefault();
+
+    let sendingTime = new Date();
+    let time = sendingTime.toString();
+    const userComment = {
+      user: username, comment: comment, star: value, time: time
+    }
+    console.log(userComment);
+    fetch(`https://6558bb31e93ca47020a9a821.mockapi.io/products/:${id}`, {
+      method: 'PUT', // or PATCH
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ review: reviewArr.push(userComment) })
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+    }).then(task => {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "You have successfully rated this product.Thank you!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }).catch(error => {
+      // handle error
+    })
+
+
   }
-
-  const [value, setValue] = React.useState(2);
-  const [hover, setHover] = React.useState(-1);
   return (
-    <div className="mb-5">
+    <div className="my-5">
       {productArr.map((product) => (
         <div className="container">
           <div className="row">
             {/* BEGIN IMAGE PRODUCT - LEFT */}
-            <div className="col-md-8">
+            <div className="col-md-8 product-review-left">
               <div className="row image">
                 <div className="row img-product mb-4">
-                  <div className="col-md-12 g-0">
+                  <div className="col-md-12 g-0 img-display">
                     <img src={imgUrl === "" ? product.image : imgUrl} alt="" />
                   </div>
                 </div>
                 <div className="row img-product-thumbnail">
                   <button
-                    className="col-md-4"
+                    className="col-md-4 me-3"
                     onClick={() => setImgUrl(product["image-detail"])}
                   >
                     <img
                       src={product["image-detail"]}
-                      className="img-thumbnail w-100 h-100"
+                      className="w-100 h-100"
                       alt=""
                     />
                   </button>
@@ -115,7 +147,7 @@ function ProductDetail({ products }) {
                   >
                     <img
                       src={product.image}
-                      className="img-thumbnail w-100 h-100"
+                      className="w-100 h-100"
                       alt=""
                     />
                   </button>
@@ -123,98 +155,108 @@ function ProductDetail({ products }) {
               </div>
               <div className="row mt-5 product-review pb-4">
                 <h3>PRODUCT REVIEW</h3>
-                <div className="border">There are no reviews yet</div>
+
+                {/* BEGIN REVIEW PRODUCT BY USER */}
+
+
+                <div className="row">
+                  {reviewArr.map((review) => (
+                    <div className="col-md-12">
+                      <div className="row mb-3">
+                        <div className="col-md-3">
+                          <div className="col-md-12"> {review.user} </div>
+                          <div className="col-md-12"> {review.time} </div>
+                        </div>
+                        <div className="col-md-9">
+                          <Rating name="read-only" value={review.star} readOnly />
+                          <Typography component="legend">
+                            {review.comment}
+                          </Typography>
+
+                        </div>
+
+
+
+                      </div>
+                    </div>
+
+                  )
+                  )}
+
+
+                </div>
                 {/* BEGIN RATING  */}
+
+                <h4 className="mt-3">Please rate the product at here</h4>
                 <Box
                   sx={{
-                    width: 200,
-                    display: "flex",
-                    alignItems: "center",
+                    '& > legend': { mt: 2 },
                   }}
                 >
+                  <Typography component="legend">Controlled</Typography>
                   <Rating
-                    name="size-large"
+                    name="simple-controlled"
                     value={value}
-                    getLabelText={getLabelText}
                     onChange={(event, newValue) => {
                       setValue(newValue);
                     }}
-                    onChangeActive={(event, newHover) => {
-                      setHover(newHover);
-                    }}
-                    emptyIcon={
-                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                    }
+
                   />
-                  {value !== null && (
-                    <Box sx={{ ml: 2 }}>
-                      {labels[hover !== -1 ? hover : value]}
-                    </Box>
-                  )}
                 </Box>
+                <form action="" onSubmit={(e) => handleComment(e)}>
+                  <div className="row">
+                    <input type="text"
+                      name="commentUser"
+                      id="commentUser"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      placeholder="Comment"
+                    />
+                    <button className="col-md-3" type="submit">Send</button>
+                  </div>
+
+
+                </form>
+
+
                 {/* END RATING */}
               </div>
             </div>
 
             {/* BEGIN INFO PRODUCT - RIGHT */}
-            <div className="col-md-4">
-              {/* <div className="row mb-4">
-                <h2 className="text-center">INFO OF PRODUCT</h2>
-              </div> */}
+            <div className="col-md-4 product-detail-right">
               <div className="row">
-                <h4 className="mb-3"> {product.name} </h4>
+                <h4 className="mb-4 text-center"> {product.name} </h4>
                 <p className="mb-3">
-                  {" "}
-                  Price:{" "}
+
+                  <span>Price: </span>
                   <span className="font-bold fw-bold">
                     {product.price}$
-                  </span>{" "}
+                  </span>
                 </p>
-                <p className="mb-3"> Brand: {product.brand}</p>
-                <p className="mb-3"> Room: {product.room}</p>
+                <p className="mb-3 col-md-12">
+                  <span>Brand: </span>
+                  <span>{product.brand}</span>
+                </p>
+                <p className="mb-3 col-md-12">
+                  <span>Room: </span>
+                  <span>{product.room}</span>
+                </p>
 
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#demo"
-                >
-                  Product description:
-                </button>
-                <div id="demo" class="collapse show">
-                  {product.description}
+                <h4> Product description:</h4>
+
+
+                <div>
+                  {product.description.slice(0, 250)}
                 </div>
-                <h5> </h5>
                 <a
                   href={product["path-doc"]}
-                  className="mb-3 btn btn-warning"
+                  className="my-3 btn btn-info"
                   target="blank"
                 >
                   <i class="fa-solid fa-file-arrow-down"></i>
                   Download detail feature
                 </a>
-
-                <h4> Quantity</h4>
-
-                <div className="col-md-12 d-flex mb-5">
-                  <button
-                    className="btn btn-info"
-                    onClick={() => setQuantity(quantity + 1)}
-                  >
-                    {" "}
-                    +{" "}
-                  </button>
-                  <div className="p-3"> {quantity} </div>
-                  <button
-                    onClick={() =>
-                      quantity > 0 ? setQuantity(quantity - 1) : false
-                    }
-                    className="btn btn-info"
-                  >
-                    {" "}
-                    -
-                  </button>
-                </div>
 
                 <ButonsProductDetailPage product={product} />
               </div>
@@ -253,20 +295,21 @@ function ProductDetail({ products }) {
                         }
                       >
                         {" "}
-                        {item.name}
+                        {/* {item.name} */}
                       </a>
                     </div>
                     <ProductBodyElement product={product} />
                     <div className="row product-btn p-3">
-                      <ButtonsProductPage />
+                      <ButtonsProductPage product={product} />
                     </div>
                   </div>
                 ))}
             </Slider>
           </div>
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 }
 

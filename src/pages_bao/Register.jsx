@@ -44,8 +44,6 @@ function Register({ users }) {
         }
     )
 
-
-
     const addUser = (newUser) => {
 
         // console.log(newUser);
@@ -66,7 +64,7 @@ function Register({ users }) {
     }
     return (
 
-        <div className="container">
+        <div className="container form-register">
             <div className="row">
                 <h1 className="text-center">REGISTER MEMBER</h1>
                 <form action="" className="form-control mx-auto px-5 w-75 register" onSubmit={formik.handleSubmit}>

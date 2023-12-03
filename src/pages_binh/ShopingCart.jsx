@@ -104,17 +104,17 @@ function ShopingCart(props) {
                 <table className="w-100 ">
                   <tr>
                     <td>Subtotal({productCount} items)</td>
-                    <td className="right">{formatter.format(subtotal)}$</td>
+                    <td className="right">${formatter.format(subtotal)}</td>
                   </tr>
                   {promotion > 0 && (
                     <tr>
                       <td>Promotion</td>
-                      <td className="right">{formatter.format(promotion)}$</td>
+                      <td className="right">- ${formatter.format(promotion)}</td>
                     </tr>
                   )}
                   <tr>
                     <td>Shipping Fee(5%)</td>
-                    <td className="right">{formatter.format(shippingFee)}$</td>
+                    <td className="right">${formatter.format(shippingFee)}</td>
                   </tr>
                   <tr>
                     <td>
@@ -145,10 +145,18 @@ function ShopingCart(props) {
                       )}
                     </td>
                   </tr>
-                  <tr className="bold">
-                    <td>Total</td>
-                    <td className="right bold">
-                      {formatter.format(total - discountVoucher)}$
+                  {discountVoucher > 0 && (
+                    <tr>
+                      <td>Voucher</td>
+                      <td className="right">- ${formatter.format(discountVoucher)}</td>
+                    </tr>
+                  )}
+                  <tr className="">
+                    <td className="bold">Total</td>
+                    <td className="right">
+                      <strong>
+                      ${formatter.format(total - discountVoucher)}
+                      </strong>
                     </td>
                   </tr>
                   <tr>
@@ -201,13 +209,16 @@ function ShopingCart(props) {
                 <p style={{ fontSize: "0.8em", marginBottom: "0" }}>
                   Shipping Fee: ${formatter.format(shippingFee)}
                 </p>
+                <p style={{ fontSize: "0.8em", marginBottom: "0px" }}>
+                  {promotion > 0 && `Discount: - ${promotion}`}
+                </p>
                 <p style={{ fontSize: "0.8em" }}>
-                  {promotion > 0 && `Discount: ${promotion}`}
+                  {discountVoucher > 0 && `Voucher: - ${discountVoucher}`}
                 </p>
               </div>
-              <div className="col-4 mt-2 ordersummary-mobile ordersummary-button-mobile">
+              <div className="col-4 ordersummary-mobile ordersummary-button-mobile">
                 <button
-                  className="btn btn-dark w-100 ordersummary-button-mobile"
+                  className="btn btn-dark w-100 ordersummary-button-mobile px-0"
                   style={{ fontSize: "0.8em" }} onClick={() => {
                     navigate("/checkout");
                   }}

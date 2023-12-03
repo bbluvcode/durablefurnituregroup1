@@ -9,7 +9,7 @@
 }
 
 .black-heart {
-  color: black;
+  color: #3b3a3a;
 }
 
 .text-left {
@@ -656,7 +656,7 @@ h2::after {
 
 /* ----------------------------------------------Check out page-------------------------------- */
 
-.container {
+.container-binh {
     margin: 20px auto;
     width: 800px;
     padding: 30px
@@ -677,7 +677,7 @@ h2::after {
     border-radius: 0
 }
 
-.text {
+.text-binh {
     font-size: 13px
 }
 
@@ -712,7 +712,7 @@ h2::after {
     height: 40px;
     border-radius: 50%;
     background-color: #ddd;
-    color: black;
+    color: #3b3a3a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -726,7 +726,7 @@ h2::after {
 
 .nav.nav-tabs .nav-item .nav-link {
     border: none;
-    color: black;
+    color: #3b3a3a;
     border-bottom: 2px solid transparent;
     font-size: 14px
 }
@@ -757,7 +757,7 @@ h2::after {
     position: relative
 }
 
-img {
+.img-master {
     width: 50px;
     height: 20px;
     object-fit: cover
@@ -767,7 +767,7 @@ img {
     position: absolute;
     right: 0px;
     bottom: 9px;
-    color: black;
+    color: #3b3a3a;
     cursor: pointer;
     transition: 0.3s;
     font-size: 14px
@@ -779,7 +779,7 @@ img {
 }
 
 .btn-outline-primary {
-    color: black;
+    color: #3b3a3a;
     background-color: #ddd;
     border: 1px solid #ddd
 }
@@ -961,11 +961,11 @@ form .btn.btn-primary:hover {
   }
 
   .order_summary_mobile-tablet {
-    height: 10vh;
+    height: auto;
     display: block;
     position: fixed;
     z-index: 1998;
-    top: 90vh;
+    bottom: 0;
     padding: 0;
   }
 

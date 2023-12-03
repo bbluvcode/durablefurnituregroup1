@@ -1,0 +1,19 @@
+.img-display {
+    
+}
+.img-display > img {
+    object-fit: cover;
+    width: 100%;
+    height: auto
+}
+
+.img-product-thumbnail{
+    height: 100px;
+    width: 400px;
+}
+
+.img-product-thumbnail button{
+    border: none;
+    
+
+}

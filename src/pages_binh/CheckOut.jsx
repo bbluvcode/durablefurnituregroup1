@@ -1,21 +1,24 @@
 import React from 'react'
+import { NavLink } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
-export default function CheckOut() {
+export default function CheckOut({ subtotal, shippingFee, promotion, discountVoucher}) {
+    const navigate = useNavigate()
     return (
-        <div className="container bg-light d-md-flex align-items-center">
+        <div className="container container-binh bg-light d-md-flex align-items-center">
             <div className="card box1 shadow-sm p-md-5 p-md-5 p-4">
                 <div className="fw-bolder mb-4">
                     <span className="fas fa-dollar-sign" />
                     <span className="ps-1">1170,00</span>
                 </div>
                 <div className="d-flex flex-column">
-                    <div className="d-flex align-items-center justify-content-between text">
+                    <div className="d-flex align-items-center justify-content-between text-binh">
                         <span className>Commission</span>
                         <span className="fas fa-dollar-sign">
                             <span className="ps-1">30</span>
                         </span>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between text mb-4">
+                    <div className="d-flex align-items-center justify-content-between text-binh mb-4">
                         <span>Total</span>
                         <span className="fas fa-dollar-sign">
                             <span className="ps-1">1200</span>
@@ -23,24 +26,24 @@ export default function CheckOut() {
                     </div>
                     <div className="border-bottom mb-4" />
                     <div className="d-flex flex-column mb-4">
-                        <span className="far fa-file-alt text">
+                        <span className="far fa-file-alt text-binh">
                             <span className="ps-2">Invoice ID:</span>
                         </span>
                         <span className="ps-3">T12308A0</span>
                     </div>
                     <div className="d-flex flex-column mb-5">
-                        <span className="far fa-calendar-alt text">
+                        <span className="far fa-calendar-alt text-binh">
                             <span className="ps-2">Next payment:</span>
                         </span>
-                        <span className="ps-3">6 december,2023</span>
+                        <span className="ps-3">6 december, 2023</span>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between text mt-5">
-                        <div className="d-flex flex-column text">
+                    <div className="d-flex align-items-center justify-content-between text-binh mt-5">
+                        <div className="d-flex flex-column text-binh">
                             <span>Customer Support:</span>
                             <span>online chat 24/7</span>
                         </div>
                         <div className="btn btn-primary rounded-circle">
-                            <span style={{"color":"#3b3a3a"}} className="fas fa-comment-alt" />
+                            <span style={{ "color": "#3b3a3a" }} className="fas fa-comment-alt" />
                         </div>
                     </div>
                 </div>
@@ -54,13 +57,13 @@ export default function CheckOut() {
                 </div>
                 <ul className="nav nav-tabs mb-3 px-md-4 px-2">
                     <li className="nav-item">
-                        <a className="nav-link px-2 active" aria-current="page" href="#">Credit Card</a>
+                        <NavLink className="nav-link px-2 active" aria-current="page" to="#">Credit Card</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link px-2" href="#">Mobile Payment</a>
+                        <NavLink className="nav-link px-2" to="#">Mobile Payment</NavLink>
                     </li>
                     <li className="nav-item ms-auto">
-                        <a className="nav-link px-2" href="#">+ More</a>
+                        <NavLink className="nav-link px-2" to="#">+ More</NavLink>
                     </li>
                 </ul>
                 <div className="px-md-5 px-4 mb-4 d-flex align-items-center">
@@ -82,9 +85,9 @@ export default function CheckOut() {
                             <div className="d-flex flex-column px-md-5 px-4 mb-4">
                                 <span>Credit Card</span>
                                 <div className="inputWithIcon">
-                                    <input className="form-control" type="text" defaultValue="4619 3000 5678 1234" />
+                                    <input className="form-control" type="text-binh" defaultValue="4619 3000 5678 1234" />
                                     <span className>
-                                        <img src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png" alt />
+                                        <img className='img-master' src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png" alt='logomastercard' />
                                     </span>
                                 </div>
                             </div>
@@ -94,7 +97,7 @@ export default function CheckOut() {
                                 <span>Expiration<span className="ps-1">Date</span>
                                 </span>
                                 <div className="inputWithIcon">
-                                    <input type="text" className="form-control" defaultValue="03/2026" />
+                                    <input type="text-binh" className="form-control" defaultValue="03/2026" />
                                     <span className="fas fa-calendar-alt" />
                                 </div>
                             </div>
@@ -112,13 +115,15 @@ export default function CheckOut() {
                             <div className="d-flex flex-column px-md-5 px-4 mb-4">
                                 <span>Name</span>
                                 <div className="inputWithIcon">
-                                    <input className="form-control text-uppercase" type="text" defaultValue="VO THI BE BINH" />
+                                    <input className="form-control text-binh-uppercase" type="text-binh" defaultValue="VO THI BE BINH" />
                                     <span className="far fa-user" />
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 px-md-5 px-4 mt-3">
-                            <div className="btn btn-primary w-100">Pay $1170</div>
+                            <button onClick={() => {
+                                navigate("/checkoutsuccess")
+                            }} className="btn btn-primary w-100">Pay $1170</button>
                         </div>
                     </div>
                 </form>
