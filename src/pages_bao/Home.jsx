@@ -1,12 +1,12 @@
-// import { useNavigate, Link } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Home.css'
-import { Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
 import Slider from "react-slick";
 import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
+import BannerHome from "./BannerHome";
 
 function Home({ products }) {
     const navigate = useNavigate();
@@ -78,13 +78,13 @@ function Home({ products }) {
     };
     return (
         <div className="home-page container-fluid mx-0 px-0">
-
-            <div className="mb-4 pb-5 banner mx-0 px-0">
-                {/* BEGIN BANNER SECTION */}
+            <BannerHome />
+            {/* BEGIN BANNER SECTION */}
+            {/* <div className="mb-4 pb-5 banner mx-0 px-0">
                 <div className="banner-home">
                     <img style={{ width: "100%" }} src="img/logo/Banner_home.png" alt="" />
                 </div>
-            </div>
+            </div> */}
             {/* END BANNER */}
 
             {/* BEGIN NEW PRODUCT CAROUSEL */}
