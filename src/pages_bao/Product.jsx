@@ -7,8 +7,7 @@ import React, { useState } from 'react';
 
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from "react-router-dom";
-import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
-import ProductBodyElement from "./ProductBodyElement";
+import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
 // import { current } from "@reduxjs/toolkit";
 function Product({ products }) {
     // console.log(products.slice(0, 12));
@@ -26,24 +25,17 @@ function Product({ products }) {
             <div className="row">
                 {currentItems &&
                     currentItems.map((product) => (
-                        <div className="col-md-4 product-item">
 
-                            <button className="row product-img border-0"
-                                onClick={() => navigate("/product-detail", { state: { key: product.name, id: product.pid } })}>
-                                <img className="col-md-12 img-thumbnail w-100 h-100" src={product.image} alt="" />
-                            </button>
-                            <div className="row product-name py-3 text-center">
-                                <a className="col-md-12 product-link"
-                                    onClick={() => navigate("/product-detail", { state: { key: product.name } })}> {product.name}</a>
-                            </div>
-                            <ProductBodyElement product={product} />
-                            <div className="row product-btn p-3">
-                                <ButtonsProductPage product={product} />
-
-                            </div>
+                        <div
+                            className="col-6 col-lg-4 col-md-4 productitem-cart"
+                            key={product.pid}
+                        >
+                            <ProductItemMainpage product={product} />
                         </div>
 
+
                     ))}
+
 
             </div>
         );

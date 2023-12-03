@@ -16,12 +16,22 @@ function Footer() {
               </NavLink>
             </div>
             <div className="footer-menu">
-              {/* <h2 className="footer-menu-name"> Get Started</h2> */}
+
               <ul id="menu-get-started" className="footer-menu-list mobile-hide" style={{ width: "100px", margin: "auto" }}>
+              <h2 className="footer-call-to-action-title">Work time</h2>
+
                 <li className="">
-                  <img src="img/logo/copyright.png" alt="" />
-                  <img src="img/logo/copyright1.png" alt="" />
-                  <img src="img/logo/copyright2.png" alt="" />
+                <div class="footer__time">
+                    <p>Mon - Friday</p>
+                    <p>9h30 - 18h30</p>
+                </div>                
+                </li>
+                <li className="">                
+                <div class="footer__time">
+                    <p>Sat - Sunday </p>
+                    <p>9h30 - 18h30</p>
+                </div>
+                
                 </li>
               </ul>
             </div>

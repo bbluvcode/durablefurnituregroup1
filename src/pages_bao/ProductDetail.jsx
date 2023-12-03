@@ -10,14 +10,12 @@ import * as React from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import "./ProductDetail.css"
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import ButonsProductDetailPage from "../pages_binh/button/ButonsProductDetailPage";
-import ProductBodyElement from "./ProductBodyElement";
 import Typography from '@mui/material/Typography';
+import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
 function ProductDetail({ products }) {
   let location = useLocation();
   let name = location.state.key;
@@ -154,12 +152,12 @@ function ProductDetail({ products }) {
                 </div>
               </div>
               <div className="row mt-5 product-review pb-4">
-                <h3>PRODUCT REVIEW</h3>
+                <h3 className="px-0">PRODUCT REVIEW</h3>
 
                 {/* BEGIN REVIEW PRODUCT BY USER */}
 
 
-                <div className="row">
+                <div className="row px-0">
                   {reviewArr.map((review) => (
                     <div className="col-md-12">
                       <div className="row mb-3">
@@ -187,13 +185,15 @@ function ProductDetail({ products }) {
                 </div>
                 {/* BEGIN RATING  */}
 
-                <h4 className="mt-3">Please rate the product at here</h4>
-                <Box
+                <h3 className="mt-3 px-0">Please rate the product at here</h3>
+                {isLogin === "true" ? 
+                <div>
+                  <Box className="px-0"
                   sx={{
                     '& > legend': { mt: 2 },
                   }}
                 >
-                  <Typography component="legend">Controlled</Typography>
+                  <Typography component="legend"></Typography>
                   <Rating
                     name="simple-controlled"
                     value={value}
@@ -203,25 +203,30 @@ function ProductDetail({ products }) {
 
                   />
                 </Box>
-                <form action="" onSubmit={(e) => handleComment(e)}>
-                  <div className="row">
-                    <input type="text"
-                      name="commentUser"
-                      id="commentUser"
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                      placeholder="Comment"
-                    />
-                    <button className="col-md-3" type="submit">Send</button>
-                  </div>
+                  <form action="" className="row" onSubmit={(e) => handleComment(e)}>
 
+                    <div className="col-md-12 px-0">
+                      <textarea rows="5" cols="7" name="commentUser"
+                        id="commentUser"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        placeholder="Comment"
+                        className="comment-user-form w-50">
 
-                </form>
+                      </textarea>
+                    </div>
+                    <br />
 
+                    <button className="btn-sendComment btn btn-outline-dark" type="submit">Send</button>
+
+                  </form>
+                </div> : <a className="text-decoration-none col-md-12 require-login" onClick={()=>navigate("/login")}> Please log in to perform this function </a>}
 
                 {/* END RATING */}
               </div>
             </div>
+
+
 
             {/* BEGIN INFO PRODUCT - RIGHT */}
             <div className="col-md-4 product-detail-right">
@@ -251,7 +256,7 @@ function ProductDetail({ products }) {
                 </div>
                 <a
                   href={product["path-doc"]}
-                  className="my-3 btn btn-info"
+                  className="my-5 btn btn-info"
                   target="blank"
                 >
                   <i class="fa-solid fa-file-arrow-down"></i>
@@ -270,39 +275,13 @@ function ProductDetail({ products }) {
               {products
                 .filter((item) => item.room === product.room)
                 .map((item) => (
-                  <div className="col-md-3 mb-3 p-3 product-item">
-                    <button
-                      className="row product-img"
-                      onClick={() =>
-                        navigate("/product-detail", {
-                          state: { key: item.name },
-                        })
-                      }
-                    >
-                      <img
-                        className="col-md-12 img-thumbnail w-100 h-100"
-                        src={item.image}
-                        alt=""
-                      />
-                    </button>
-                    <div className="row product-name py-3 text-center">
-                      <a
-                        className="col-md-12 product-link"
-                        onClick={() =>
-                          navigate("/product-detail", {
-                            state: { key: item.name },
-                          })
-                        }
-                      >
-                        {" "}
-                        {/* {item.name} */}
-                      </a>
-                    </div>
-                    <ProductBodyElement product={product} />
-                    <div className="row product-btn p-3">
-                      <ButtonsProductPage product={product} />
-                    </div>
+                  <div
+                    className="col-6 col-lg-4 col-md-3 productitem-cart"
+                    key={product.pid}
+                  >
+                    <ProductItemMainpage product={product} />
                   </div>
+
                 ))}
             </Slider>
           </div>

@@ -936,13 +936,14 @@ form .btn.btn-primary:hover {
 
 .footer-menu-name {
   color: #fffff2;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 900;
   letter-spacing: .1em;
   line-height: 18px;
   margin-bottom: 0;
   margin-top: 0;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .footer-menu-list {
@@ -1002,6 +1003,7 @@ form .btn.btn-primary:hover {
   margin-bottom: 0;
   margin-top: 0;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .footer-call-to-action-link-wrapper {
@@ -1017,7 +1019,11 @@ form .btn.btn-primary:hover {
 }
 
 
-
+.footer__time > p{
+ /* padding: 0; */
+ margin: 0;
+ font-size: 14px;
+}
 
 
 .footer-flower {

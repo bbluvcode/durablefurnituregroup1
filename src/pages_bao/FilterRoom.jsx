@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import { useEffect } from "react";
 import ProductBodyElement from "./ProductBodyElement";
+import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
 function FilterRoom({ products }) {
 
     console.log(products);
@@ -10,9 +11,9 @@ function FilterRoom({ products }) {
     let location = useLocation();
     let room = location.state.key;
     console.log(room);
-    useEffect(()=>{
-        window.scrollTo(0,0);
-    },[room])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [room])
     return (
         <div>
             <div className="container">
@@ -127,27 +128,13 @@ function FilterRoom({ products }) {
                         <div className="row">
                             {products.filter(product => product.room === room)
                                 .map(product => (
-                                    <div className="col-md-4 product-item">
-
-                                        <button className="row product-img border-0"
-                                        onClick={()=>navigate("/product-detail", {state: {key: product.name}})}>
-                                            <img className="col-md-12 img-thumbnail w-100 h-100" src={product.image} alt="" />
-                                        </button>
-                                        <div className="row product-name py-3 text-center">
-                                            <a className="col-md-12 product-link"
-                                            onClick={()=>navigate("/product-detail", {state: {key: product.name}})}> {product.name}</a>
-                                        </div>
-                                        <div className="row">
-                                           <ProductBodyElement product = {product}/>
-
-                                        </div>
-                                        <div className="row product-btn p-3">
-
-                                        <ButtonsProductPage product={product} />
-
-
-                                        </div>
+                                    <div
+                                        className="col-6 col-lg-4 col-md-4 productitem-cart"
+                                        key={product.pid}
+                                    >
+                                        <ProductItemMainpage product={product} />
                                     </div>
+
 
                                 ))}
 

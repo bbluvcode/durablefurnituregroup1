@@ -17,3 +17,11 @@
     
 
 }
+button.btn-sendComment {
+    display: block;
+    width: 100px;
+}
+a.require-login {
+    cursor: pointer;
+    color: red;
+}

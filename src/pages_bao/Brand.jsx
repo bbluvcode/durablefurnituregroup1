@@ -53,7 +53,7 @@ function Brand({ products }) {
                             <h3 className='text-bold'> {brand}</h3>
                         </div>
                         <Slider className="col-md-12" {...settings}>
-                        
+
                             {products.filter(function (product) { return product.brand === brand }).map(
                                 product => {
                                     return (
