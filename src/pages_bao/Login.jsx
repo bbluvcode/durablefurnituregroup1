@@ -77,7 +77,7 @@ function Login({ users }) {
                     <div className="row">
                         <button type="submit" className="btn btn-info btn-md mt-3 col-md-3">Login</button>
 
-                        <a href="" className="register"  onClick={() => navigate("/register")}>
+                        <a className="register"  onClick={() => navigate("/register")}>
                             If you don't have an account, register here</a>
 
                     </div>

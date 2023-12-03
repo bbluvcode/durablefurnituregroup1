@@ -1,7 +1,5 @@
 import { useFormik } from 'formik';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import * as Yup from 'yup';
 import "./Register.css";
 
@@ -64,10 +62,10 @@ function Register({ users }) {
     }
     return (
 
-        <div className="container form-register">
+        <div className="container mb-5">
             <div className="row">
                 <h1 className="text-center">REGISTER MEMBER</h1>
-                <form action="" className="form-control mx-auto px-5 w-75 register" onSubmit={formik.handleSubmit}>
+                <form action="" className="form form-group mx-auto px-5 w-75 register" onSubmit={formik.handleSubmit}>
                     <label htmlFor="username" className="d-block">Username</label>
                     <input type="text"
                         name="username"

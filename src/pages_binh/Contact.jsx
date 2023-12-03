@@ -48,7 +48,7 @@ function Contact() {
 
   return (
     <div>
-      <div className="contact container text-center">
+      <div className="contact container text-center mt-2">
         {/*----------------------- Contact us -------------------------*/}
         <div className="contact-us container-fluid text-center">
           <div className="row">

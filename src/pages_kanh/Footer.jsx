@@ -17,7 +17,7 @@ function Footer() {
             </div>
             <div className="footer-menu">
               {/* <h2 className="footer-menu-name"> Get Started</h2> */}
-              <ul id="menu-get-started" className="footer-menu-list" style={{ width: "100px", margin: "auto" }}>
+              <ul id="menu-get-started" className="footer-menu-list mobile-hide" style={{ width: "100px", margin: "auto" }}>
                 <li className="">
                   <img src="img/logo/copyright.png" alt="" />
                   <img src="img/logo/copyright1.png" alt="" />
