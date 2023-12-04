@@ -77,7 +77,7 @@ function Home({ products }) {
         ]
     };
     return (
-        <div className="home-page container-fluid mx-0 px-0">
+        <div className="home-page container-fluid mx-0 px-0 mt-0">
             <BannerHome />
             {/* BEGIN BANNER SECTION */}
             {/* <div className="mb-4 pb-5 banner mx-0 px-0">
