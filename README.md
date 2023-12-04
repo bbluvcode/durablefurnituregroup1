@@ -1,1 +1,1 @@
-bbluvcode/github.io/durablefurniture
+https://653f52049e8bd3be29e0427e.mockapi.io/products

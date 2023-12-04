@@ -121,7 +121,7 @@ function Header(props) {
               <span className="me-2">
                 <ShopingCart_icon />
               </span>
-              <span className="title_headersmall me-1 ms-1">Shoping Cart</span>
+              <span className="title_headersmall me-1 ms-1">Shopping Cart</span>
             </NavLink>{" "}
             {/* ------------------basketFloat------------- */}
             <ShopingCart_float shopingcart={shopingcart} />
@@ -133,10 +133,13 @@ function Header(props) {
             </NavLink>
           </div>
           <div className="Login-icon">
-            <NavLink to={isLogin==="true"? "-1":"/login" } className="link text-white">
+            <NavLink
+              to={isLogin === "true" ? "-1" : "/login"}
+              className="link text-white"
+            >
               <i class="fa fa-user-circle ms-1 me-1"></i>
               <span className="title_headersmall">
-                {isLogin==="true"? username: "Login"}
+                {isLogin === "true" ? username : "Login"}
               </span>
             </NavLink>
           </div>
@@ -145,7 +148,11 @@ function Header(props) {
       {/* ---------------------------------lightHeader---------------------------------- */}
       <nav className="navbar navbar-expand-md bg-light navbar-light">
         <NavLink className="navbar-brand" to="/">
-          <img className="logo" src="./img/logo/logo-bglight-trans.png" alt="" />
+          <img
+            className="logo"
+            src="./img/logo/logo-bglight-trans.png"
+            alt=""
+          />
         </NavLink>
         <button
           className="navbar-toggler"
@@ -208,7 +215,11 @@ function Header(props) {
         id="headerFixed"
       >
         <NavLink className="navbar-brand" to="/">
-          <img className="logo" src="./img/logo/logo-bglight-trans.png" alt="" />
+          <img
+            className="logo"
+            src="./img/logo/logo-bglight-trans.png"
+            alt=""
+          />
         </NavLink>
         <button
           className="navbar-toggler"
