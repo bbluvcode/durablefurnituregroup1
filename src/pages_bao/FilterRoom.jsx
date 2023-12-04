@@ -4,6 +4,7 @@ import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import { useEffect } from "react";
 import ProductBodyElement from "./ProductBodyElement";
 import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
+import DropdownFilter from "./DropdownFilter";
 function FilterRoom({ products }) {
 
     console.log(products);
@@ -21,9 +22,12 @@ function FilterRoom({ products }) {
                     <h1 className="text-center border-bottom py-3"> {room} Products </h1>
                 </div>
                 <div className="row">
+                    <div class="btn-group d-md-none  dropdown-filter fixed-top ">
+                        <DropdownFilter/>
+                    </div>
 
                     {/* BEGIN SIDEBAR LEFT FILTER  */}
-                    <div className="col-md-3 sidebar">
+                    <div className="col-md-3 sidebar d-none d-md-block">
                         <div className="row">
                             <h3 className="col-md-12">
                                 <span className="mr-5">FILTER</span>   <i class="fa-solid fa-filter fa-beat fa-sm"></i>
@@ -129,7 +133,7 @@ function FilterRoom({ products }) {
                             {products.filter(product => product.room === room)
                                 .map(product => (
                                     <div
-                                        className="col-6 col-lg-4 col-md-4 productitem-cart"
+                                        className="col-6 col-lg-4 col-md-6 productitem-cart"
                                         key={product.pid}
                                     >
                                         <ProductItemMainpage product={product} />

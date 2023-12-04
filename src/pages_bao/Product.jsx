@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from "react-router-dom";
 import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
+import DropdownFilter from "./DropdownFilter";
 // import { current } from "@reduxjs/toolkit";
 function Product({ products }) {
     // console.log(products.slice(0, 12));
@@ -27,7 +28,7 @@ function Product({ products }) {
                     currentItems.map((product) => (
 
                         <div
-                            className="col-6 col-lg-4 col-md-4 productitem-cart"
+                            className="col-6 col-md-6 col-lg-4  productitem-cart"
                             key={product.pid}
                         >
                             <ProductItemMainpage product={product} />
@@ -71,20 +72,7 @@ function Product({ products }) {
             <>
                 <Items currentItems={currentItems} />
                 <ReactPaginate
-                    // breakLabel="..."
-                    // nextLabel=">>"
-                    // onPageChange={handlePageClick}
-                    // pageRangeDisplayed={5}
-                    // pageCount={pageCount}
-                    // previousLabel="<<"
-                    // renderOnZeroPageCount={null}
-                    // containerClassName="pagination-product"
-                    // pageClassName="pagination-item"
-                    // activeClassName="pagination-active"
-                    // pageLinkClassName="pagination-link"
-                    // activeLinkClassName="pagination-link-active"
-                    // previousClassName="previous"
-                    // nextClassName="next"
+
                     previousLabel={'«'}
                     nextLabel={'»'}
                     pageCount={pageCount}
@@ -111,12 +99,16 @@ function Product({ products }) {
                 <h1 className="text-center border-bottom py-3"> ALL PRODUCT </h1>
             </div>
             <div className="row">
+                <div class="btn-group d-md-none dropdown-filter fixed-top">
+                  <DropdownFilter/>
+                </div>
 
                 {/* BEGIN SIDEBAR LEFT FILTER  */}
-                <div className="col-md-3 sidebar">
+                <div className="col-md-3 sidebar d-none d-md-block">
                     <div className="row">
                         <h3 className="col-md-12">
-                            <span className="mr-5">FILTER</span>   <i class="fa-solid fa-filter fa-beat fa-sm"></i>
+                            <span className="mr-5">FILTER</span>
+                            <i class="fa-solid fa-filter fa-beat fa-sm"></i>
                         </h3>
                     </div>
                     <div className="row mt-3">
@@ -159,8 +151,6 @@ function Product({ products }) {
                             <button className="btn btn-dark"
                                 onClick={() => navigate(`/filterBrand`, { state: { key: "Row" } })}
                             > Row</button>
-
-
 
                         </div>
 
@@ -214,7 +204,7 @@ function Product({ products }) {
                 {/* END SIDEBAR LEFT FILTER */}
 
                 {/* BEGIN CONTENT - SHOW LIST PRODUCT  */}
-                <div className="col-md-9 content border">
+                <div className="col-12 col-md-9 d-md-block content border">
 
                     <div className="col-md-12 text-center">
                         <PaginatedItems itemsPerPage={9} />

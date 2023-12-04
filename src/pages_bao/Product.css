@@ -103,3 +103,9 @@ a.product-link {
   
 }
 
+.dropdown-filter {
+  position: sticky;
+  top: 10%;
+  left: 0px;
+  
+}

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ButtonsProductPage from "../pages_binh/button/ButtonsProductPage";
 import ProductBodyElement from "./ProductBodyElement";
 import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
+import DropdownFilter from "./DropdownFilter";
 function FilterBrand({ products }) {
 
     console.log(products);
@@ -22,9 +23,12 @@ function FilterBrand({ products }) {
                     <h1 className="text-center border-bottom py-3"> {brand} Products </h1>
                 </div>
                 <div className="row">
+                <div class="btn-group d-md-none dropdown-filter fixed-top ">
+                        <DropdownFilter/>
+                    </div>
 
                     {/* BEGIN SIDEBAR LEFT FILTER  */}
-                    <div className="col-md-3 sidebar">
+                    <div className="col-md-3 sidebar d-none d-md-block">
                         <div className="row">
                             <h3 className="col-md-12">
                                 <span className="mr-5">FILTER</span>   <i class="fa-solid fa-filter fa-beat fa-sm"></i>
@@ -130,7 +134,7 @@ function FilterBrand({ products }) {
                             {products.filter(product => product.brand === brand)
                                 .map(product => (
                                     <div
-                                    className="col-6 col-lg-4 col-md-4 productitem-cart"
+                                    className="col-6 col-lg-4 col-md-6 productitem-cart"
                                     key={product.pid}
                                 >
                                     <ProductItemMainpage product={product} />

@@ -27,7 +27,7 @@ function Brand({ products }) {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true
@@ -35,6 +35,14 @@ function Brand({ products }) {
             },
             {
                 breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
+            },
+            {
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -52,8 +60,8 @@ function Brand({ products }) {
                         <div className="col-md-12">
                             <h3 className='text-bold'> {brand}</h3>
                         </div>
-                        <Slider className="col-md-12" {...settings}>
-
+                        <Slider className="col-md-12 pb-3 pb-sm-3" {...settings}>
+                        
                             {products.filter(function (product) { return product.brand === brand }).map(
                                 product => {
                                     return (

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 function Inspiration() {
   const navigate = useNavigate();
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4 border-bottom pb-3">
           <button
             className="col-md-6 btn inspiration-box-post"
             onClick={() => navigate(`/inspiration1`)}
@@ -25,13 +25,13 @@ function Inspiration() {
             </p>
           </button>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4 border-bottom pb-3">
           <button
             className="col-md-6 btn border-0 inspiration-box-post"
-            onClick={() => navigate(`/inspiration2`)}
+            onClick={() => navigate(`/inspiration3`)}
           >
             <img
-              src="img/img_product/img2.png"
+              src="img/img_product/img3.1.png"
               alt=""
               className="inspiration-post-img"
             />
@@ -45,7 +45,7 @@ function Inspiration() {
             </p>
           </button>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4 border-bottom pb-3">
           <button
             className=" btn border-0 inspiration-box-post"
             onClick={() => navigate(`/inspiration4`)}
@@ -64,13 +64,13 @@ function Inspiration() {
             </p>
           </button>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4 border-bottom pb-3">
           <button
             className=" btn border-0 inspiration-box-post"
             onClick={() => navigate(`/inspiration2`)}
           >
             <img
-              src="img/img_product/img3.1.png"
+              src="img/img_product/img2.png"
               className="inspiration-post-img"
               alt=""
             />

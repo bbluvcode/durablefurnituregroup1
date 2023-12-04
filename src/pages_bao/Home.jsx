@@ -179,7 +179,7 @@ function Home({ products }) {
                                     product => {
                                         return (
                                             <div
-                                                className="col-6 col-lg-3 col-md-3 productitem-cart"
+                                                className="col-6 col-md-4 col-lg-3 col-md-3 productitem-cart"
                                                 key={product.pid}
                                             >
                                                 <ProductItemMainpage product={product} />
@@ -249,35 +249,34 @@ function Home({ products }) {
                 </div>
                 <div className="row p-3 row-list">
 
-                    <button className="col-md-4 btn h-100"
+                    <button className="col-6 col-md-4 btn"
                         onClick={() => navigate(`/filterBrand`, { state: { key: "Ashley" } })}>
                         <img src="./img/logo/ashley.png" className="logo-brand" alt="ashley.jpg" />
                     </button >
 
-                    <button className="col-md-4 btn h-100"
+                    <button className="col-6 col-md-4 btn"
                         onClick={() => navigate(`/filterBrand`, { state: { key: "Aaron" } })}>
                         <img src="./img/logo/Aarons.png" className="logo-brand" alt="Aarons.jpg" />
                     </button>
-                    <button className="col-md-4 btn h-100"
+                    <button className="col-6 col-md-4 btn"
                         onClick={() => navigate(`/filterBrand`, { state: { key: "Dunelm Group" } })}
                     >
                         <img src="./img/logo/Dunelm.png" className="logo-brand" alt="dunelm" />
                     </button>
-                </div>
-                <div className="row mt-2 p-3 row-list">
-                    <button className="col-md-4 btn h-100"
+                    <button className="col-6 col-md-4 btn"
                         onClick={() => navigate(`/filterBrand`, { state: { key: "Forma Ideale" } })}>
                         <img src="./img/logo/Formaldeale.gif" className="logo-brand" alt="formaIdeale.jpg" />
                     </button >
-                    <button className="col-md-4 btn h-100"
+                    <button className="col-6 col-md-4 btn"
                         onClick={() => navigate(`/filterBrand`, { state: { key: "French Heritage" } })}>
                         <img src="./img/logo/French Heritage.jpg" className="logo-brand" alt="frenchHeritage.jpg" />
                     </button>
-                    <button className="col-md-4 btn h-100"
+                    <button className="col-6 col-md-4  btn"
                         onClick={() => navigate(`/filterBrand`, { state: { key: "Row" } })}>
                         <img src="./img/logo/Row.jpg" className="logo-brand" alt="row.jpg" />
                     </button>
                 </div>
+                {/* responsive ok */}
 
             </div>
             {/* END BRAND SECTION */}
