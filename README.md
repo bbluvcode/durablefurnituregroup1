@@ -1,1 +1,1 @@
-bbluvcode/github.io/durablefurniture
+https://bbluvcode.github.io/durablefurnituregroup1/
