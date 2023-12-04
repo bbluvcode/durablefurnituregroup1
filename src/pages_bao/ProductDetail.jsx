@@ -53,21 +53,29 @@ function ProductDetail({ products }) {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
-        },
+          dots: true
+        }
       },
       {
         breakpoint: 768,
         settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
+          initialSlide: 1
+        }
+      }
+    ]
   };
 
   const id = productArr[0].id;
@@ -121,16 +129,16 @@ function ProductDetail({ products }) {
         <div className="container">
           <div className="row">
             {/* BEGIN IMAGE PRODUCT - LEFT */}
-            <div className="col-md-8 product-review-left">
+            <div className="col-md-8 product-review-left mb-4">
               <div className="row image">
-                <div className="row img-product mb-4">
-                  <div className="col-md-12 g-0 img-display">
+                <div className="col-12 img-product mb-4">
+                  <div className="img-display">
                     <img src={imgUrl === "" ? product.image : imgUrl} alt="" />
                   </div>
                 </div>
                 <div className="row img-product-thumbnail">
                   <button
-                    className="col-md-4 me-3"
+                    className="col-5 me-2"
                     onClick={() => setImgUrl(product["image-detail"])}
                   >
                     <img
@@ -140,7 +148,7 @@ function ProductDetail({ products }) {
                     />
                   </button>
                   <button
-                    className="col-md-4"
+                    className="col-5"
                     onClick={() => setImgUrl(product.image)}
                   >
                     <img
@@ -151,13 +159,13 @@ function ProductDetail({ products }) {
                   </button>
                 </div>
               </div>
-              <div className="row mt-5 product-review pb-4">
-                <h3 className="px-0">PRODUCT REVIEW</h3>
+              <div className="col-12 my-5 product-review pb-4 d-none d-md-block">
+                <h3 className="px-sm-0">PRODUCT REVIEW</h3>
 
                 {/* BEGIN REVIEW PRODUCT BY USER */}
 
 
-                <div className="row px-0">
+                <div className="row px-sm-0">
                   {reviewArr.map((review) => (
                     <div className="col-md-12">
                       <div className="row mb-3">
@@ -185,42 +193,42 @@ function ProductDetail({ products }) {
                 </div>
                 {/* BEGIN RATING  */}
 
-                <h3 className="mt-3 px-0">Please rate the product at here</h3>
-                {isLogin === "true" ? 
-                <div>
-                  <Box className="px-0"
-                  sx={{
-                    '& > legend': { mt: 2 },
-                  }}
-                >
-                  <Typography component="legend"></Typography>
-                  <Rating
-                    name="simple-controlled"
-                    value={value}
-                    onChange={(event, newValue) => {
-                      setValue(newValue);
-                    }}
+                <h3 className="mt-3 px-sm-0">Please rate the product at here</h3>
+                {isLogin === "true" ?
+                  <div>
+                    <Box className="px-0"
+                      sx={{
+                        '& > legend': { mt: 2 },
+                      }}
+                    >
+                      <Typography component="legend"></Typography>
+                      <Rating
+                        name="simple-controlled"
+                        value={value}
+                        onChange={(event, newValue) => {
+                          setValue(newValue);
+                        }}
 
-                  />
-                </Box>
-                  <form action="" className="row" onSubmit={(e) => handleComment(e)}>
+                      />
+                    </Box>
+                    <form action="" className="row" onSubmit={(e) => handleComment(e)}>
 
-                    <div className="col-md-12 px-0">
-                      <textarea rows="5" cols="7" name="commentUser"
-                        id="commentUser"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                        placeholder="Comment"
-                        className="comment-user-form w-50">
+                      <div className="col-md-12 px-0">
+                        <textarea rows="5" cols="7" name="commentUser"
+                          id="commentUser"
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                          placeholder="Comment"
+                          className="comment-user-form w-50">
 
-                      </textarea>
-                    </div>
-                    <br />
+                        </textarea>
+                      </div>
+                      <br />
 
-                    <button className="btn-sendComment btn btn-outline-dark" type="submit">Send</button>
+                      <button className="btn-sendComment btn btn-outline-dark" type="submit">Send</button>
 
-                  </form>
-                </div> : <a className="text-decoration-none col-md-12 require-login" onClick={()=>navigate("/login")}> Please log in to perform this function </a>}
+                    </form>
+                  </div> : <a className="text-decoration-none col-md-12 require-login" onClick={() => navigate("/login")}> Please log in to perform this function </a>}
 
                 {/* END RATING */}
               </div>
@@ -266,25 +274,101 @@ function ProductDetail({ products }) {
                 <ButonsProductDetailPage product={product} />
               </div>
             </div>
-          </div>
 
-          <div className="row ">
-            <h3 className="text-center">YOU MAY ALSO LIKE</h3>
+            <div className="row mt-5 product-review pb-4 d-block d-md-none">
+              <h3 className="px-sm-0">PRODUCT REVIEW</h3>
 
-            <Slider className="col-md-12" {...settings}>
-              {products
-                .filter((item) => item.room === product.room)
-                .map((item) => (
-                  <div
-                    className="col-6 col-lg-4 col-md-3 productitem-cart"
-                    key={product.pid}
-                  >
-                    <ProductItemMainpage product={item} />
+              {/* BEGIN REVIEW PRODUCT BY USER */}
+
+
+              <div className="row px-sm-0">
+                {reviewArr.map((review) => (
+                  <div className="col-md-12">
+                    <div className="row mb-3">
+                      <div className="col-md-3">
+                        <div className="col-md-12"> {review.user} </div>
+                        <div className="col-md-12"> {review.time} </div>
+                      </div>
+                      <div className="col-md-9">
+                        <Rating name="read-only" value={review.star} readOnly />
+                        <Typography component="legend">
+                          {review.comment}
+                        </Typography>
+
+                      </div>
+
+
+
+                    </div>
                   </div>
 
-                ))}
-            </Slider>
+                )
+                )}
+
+
+              </div>
+              {/* BEGIN RATING  */}
+
+              <h3 className="mt-3 px-sm-0">Please rate the product at here</h3>
+              {isLogin === "true" ?
+                <div>
+                  <Box className="px-0"
+                    sx={{
+                      '& > legend': { mt: 2 },
+                    }}
+                  >
+                    <Typography component="legend"></Typography>
+                    <Rating
+                      name="simple-controlled"
+                      value={value}
+                      onChange={(event, newValue) => {
+                        setValue(newValue);
+                      }}
+
+                    />
+                  </Box>
+                  <form action="" className="row" onSubmit={(e) => handleComment(e)}>
+
+                    <div className="col-md-12 px-0">
+                      <textarea rows="5" cols="7" name="commentUser"
+                        id="commentUser"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        placeholder="Comment"
+                        className="comment-user-form w-50">
+
+                      </textarea>
+                    </div>
+                    <br />
+
+                    <button className="btn-sendComment btn btn-outline-dark" type="submit">Send</button>
+
+                  </form>
+                </div> : <a className="text-decoration-none col-md-12 require-login" onClick={() => navigate("/login")}> Please log in to perform this function </a>}
+
+              {/* END RATING */}
+            </div>
+            <div className="row ">
+              <h3 className="text-center">YOU MAY ALSO LIKE</h3>
+
+              <Slider className="col-md-12" {...settings}>
+                {products
+                  .filter((item) => item.room === product.room)
+                  .map((item) => (
+                    <div
+                      className="col-6 col-lg-4 col-md-3 productitem-cart"
+                      key={product.pid}
+                    >
+                      <ProductItemMainpage product={item} />
+                    </div>
+
+                  ))}
+              </Slider>
+            </div>
+
+
           </div>
+
         </div>
       ))
       }

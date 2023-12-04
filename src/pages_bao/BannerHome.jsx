@@ -27,7 +27,7 @@ function BannerHome() {
                 <Slider {...bannerSettings}>
                     {bannerImages.map((image, index) => (
                         <div key={index}>
-                            <img style={{ width: '100%', marginTop: "0 !important" }} src={process.env.PUBLIC_URL + image} alt={`Banner ${index + 1}`} />
+                            <img style={{ width: '100%' }} src={process.env.PUBLIC_URL + image} alt={`Banner ${index + 1}`} />
                         </div>
                     ))}
                 </Slider>

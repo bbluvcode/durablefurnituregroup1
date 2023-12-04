@@ -178,7 +178,7 @@ function Product({ products }) {
                         </div>
                         <div className="col-md-12 my-2">
                             <button className="btn btn-dark "
-                                onClick={() => navigate(`/filterRoom`, { state: { key: "DiningRoom" } })}>Dinner and kitchen</button>
+                                onClick={() => navigate(`/filterRoom`, { state: { key: "DiningRoom" } })}>Dining Room</button>
 
                         </div>
                         <div className="col-md-12 my-2">

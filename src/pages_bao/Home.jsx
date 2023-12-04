@@ -60,7 +60,7 @@ function Home({ products }) {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true
@@ -68,6 +68,14 @@ function Home({ products }) {
             },
             {
                 breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
+            },
+            {
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -79,15 +87,6 @@ function Home({ products }) {
     return (
         <div className="home-page container-fluid mx-0 px-0 mt-0">
             <BannerHome />
-            {/* BEGIN BANNER SECTION */}
-            {/* <div className="mb-4 pb-5 banner mx-0 px-0">
-                <div className="banner-home">
-                    <img style={{ width: "100%" }} src="img/logo/Banner_home.png" alt="" />
-                </div>
-            </div> */}
-            {/* END BANNER */}
-
-            {/* BEGIN NEW PRODUCT CAROUSEL */}
             <div className="container mb-5 pb-5 border-bottom">
                 <div className="row pb-3">
                     <div className="col-md-12 my-3">
