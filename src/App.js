@@ -51,24 +51,23 @@ function App() {
   const linkInspiration4 = "/inspiration4";
 
   const [products, setProducts] = useState([]);
-  const [users, setUsers] = useState([]);
+  
   const [review, setReview] = useState([]);
+  
   useEffect(() => {
     fetch("https://6558bb31e93ca47020a9a821.mockapi.io/products")
       .then((data) => data.json())
       .then((dataList) => setProducts(dataList));
-    fetch("https://655fffed83aba11d99d01309.mockapi.io/users")
-      .then((data) => data.json())
-      .then((dataList) => setUsers(dataList));
+   
 
-  fetch("https://653f52879e8bd3be29e04424.mockapi.io/movies")
-  .then((data) => data.json())
-  .then((dataList) => setReview(dataList));
-}, []);
+    fetch("https://653f52879e8bd3be29e04424.mockapi.io/movies")
+      .then((data) => data.json())
+      .then((dataList) => setReview(dataList));
+  }, []);
   console.log(review);
 
 
-console.log(products);    
+  console.log(products);
 
   const { shopingcart } = useSelector((state) => state.shopReducer);
   const { wishList } = useSelector((state) => state.shopReducer);
@@ -109,12 +108,12 @@ console.log(products);
         <Route path="/productsearch" element={<ProductSearch />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/productsearch" element={<ProductSearch />} />
-        <Route path="/register" element={<Register users={users} />} />
-        <Route path="/login" element={<Login users={users} />} />
+        {/* <Route path="/register" element={<Register users={users} />} /> */}
+        <Route path="/login" element={<Login />} />
         <Route path="/wishlist" element={<WishList wishList={wishList} />} />
         <Route path="/youmayalsolike" element={<RelatedProduct wishList={wishList} />} />
 
-        <Route path={linkInspiration} element={<Inspiration/>}/>
+        <Route path={linkInspiration} element={<Inspiration />} />
         <Route path={linkInspiration1} element={<Inspiration1 />} />
         <Route path={linkInspiration2} element={<Inspiration2 />} />
         <Route path={linkInspiration3} element={<Inspiration3 />} />
@@ -122,7 +121,7 @@ console.log(products);
 
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/checkoutsuccess" element={<CheckOutSuccess />} />
-        
+
       </Routes>
 
       <Footer />

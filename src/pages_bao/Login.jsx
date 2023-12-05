@@ -2,53 +2,85 @@ import { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-function Login({ users }) {
+
+function Login() {
     const [signIn, setSignIn] = useState(true);
     const navigate = useNavigate();
-
+    const [users, setUsers] = useState([]);
+    const isReg = sessionStorage.getItem("isReg");
+    useEffect(()=> {
+        fetch("https://655fffed83aba11d99d01309.mockapi.io/users")
+        .then((data) => data.json())
+        .then((dataList) => setUsers(dataList));
+        
+      
+        
+    },[isReg])
+    const arrUsername = [];
+    users.map(user => arrUsername.push(user.username) );
+    console.log(arrUsername);
+  
     const checkLogin = (userCheck) => {
+        console.log(userCheck);
         if (users.filter(user => user.username === userCheck.username).length !== 0) {
             if (users.filter(user => user.username === userCheck.username)[0].password === userCheck.password) {
                 alert("Login successfully");
-                sessionStorage.setItem("islogin", "true");
+                sessionStorage.setItem("islogin", true);
                 sessionStorage.setItem("username", userCheck.username);
-                navigate(-1);
+                setSignIn(false);
+                navigate("/");
             } else alert("Login fail because password is wrong")
         } else {
             alert("Username not valid");
             return false;
         }
     }
-    const formik = useFormik(
+    const formikLogin = useFormik(
         {
             initialValues: {
                 username: '',
                 password: '',
-                confirmPassword: '',
-                fullname: '',
-                email: '',
-                phone: "",
             },
             validationSchema: Yup.object().shape({
                 username: Yup.string().required('Required').min(6).max(12),
                 password: Yup.string().required('Required').min(6).max(8),
-                confirmPassword: Yup.string().required('Required').min(6).max(8),
-                fullname: Yup.string().required('Required'),
-                email: Yup.string().required('Required').email(),
-                phone: Yup.string().required('Required').length(10),
             }),
-
             onSubmit: values => {
                 if (signIn) {
                     checkLogin(values)
                 } else {
-                    addUser(values)
+                    navigate(-1);
                 }
-            },
-        }
+            }
+
+        },
+
     )
 
-    const addUser = (newUser) => {
+
+    const formikRegister = useFormik(
+        {
+            initialValues: {
+                username: '',
+                password: '',
+                phone: "",
+
+            },
+            onSubmit: values => {
+                addUser(values)
+
+
+            },
+            validationSchema: Yup.object().shape({
+                username: Yup.string().required('Required').min(6).max(12),
+                password: Yup.string().required('Required').min(6).max(8),
+                phone: Yup.string().required('Required').length(10),
+
+            }),
+
+        })
+
+    function addUser(newUser) {
 
         // console.log(newUser);
         fetch('https://655fffed83aba11d99d01309.mockapi.io/users', {
@@ -59,15 +91,16 @@ function Login({ users }) {
         }).then(res => {
             if (res.ok) {
                 alert("Register account user successfully");
+                sessionStorage.setItem("isReg",true);
             }
-        }).then(() => navigate(`/login`))
+        }).then(() => navigate(`/login`));
     }
 
 
     return (
         <div className={`container-login ${signIn ? null : "right-panel-active"}`} id="container-login">
             <div className="form-container-login sign-up-container-login">
-                <form action="#" onSubmit={formik.handleSubmit} className="form-login">
+                <form action="#" onSubmit={formikRegister.handleSubmit} className="form-login">
                     {/* -----------------SignUp------------------ */}
                     <h1>Create Account</h1>
                     <div className="social-container-login">
@@ -76,24 +109,31 @@ function Login({ users }) {
                         <NavLink to="/" className="social"><i className="fab fa-linkedin-in" /></NavLink>
                     </div>
                     <span>or use your email for registration</span>
-                    <input onChange={formik.handleChange} type="text" placeholder="User Name" />{formik.errors.username && formik.touched.username ? (
-                        <span className="text-danger">{formik.errors.username}</span>
+                    <input onChange={formikRegister.handleChange} type="text" placeholder="User Name" id="username" name="username" />
+                    {arrUsername.findIndex(element => element === formikRegister.values.username ) === -1 ? (
+                        <span className="text-danger">{formikRegister.errors.username = "Username already exists, please choose another name"}</span>
                     ) : null}
-                    <input onChange={formik.handleChange} type="text" placeholder="Number Phone" />{formik.errors.phone && formik.touched.phone ? (
-                        <span className="text-danger">{formik.errors.phone}</span>
+                    {formikRegister.errors.username && formikRegister.touched.username ? (
+                        <span className="text-danger">{formikRegister.errors.username}</span>
+                    ) : null}
+                    <input onChange={formikRegister.handleChange} type="text" placeholder="Number Phone" id="phone" name="phone" />{formikRegister.errors.phone && formikRegister.touched.phone ? (
+                        <span className="text-danger">{formikRegister.errors.phone}</span>
                     ) : null}
                     {/* <input onChange={formik.handleChange} type="email" placeholder="Email" />{formik.errors.password && formik.touched.password ? (
                         <span className="text-danger">{formik.errors.password}</span>
                     ) : null} */}
-                    <input onChange={formik.handleChange} type="password" placeholder="Password" />
-                    <button className="button-login">Register</button>
+                    <input onChange={formikRegister.handleChange} type="password" placeholder="Password" id="password" name="password" />
+                    {formikRegister.errors.password && formikRegister.touched.password ? (
+                        <span className="text-danger">{formikRegister.errors.password}</span>
+                    ) : null}
+                    <button className="button-login" type="submit">Register</button>
                 </form>
             </div>
             {/* -----------------SignUpEnd------------------ */}
 
             {/* -----------------SignIn------------------ */}
             <div className="form-container-login sign-in-container-login">
-                <form action="#" className="form-login">
+                <form action="#" className="form-login" onSubmit={formikLogin.handleSubmit}>
                     <h1>Log in</h1>
                     <div className="social-container-login">
                         <NavLink to="/" className="social"><i className="fab fa-facebook-f" /></NavLink>
@@ -101,14 +141,14 @@ function Login({ users }) {
                         <NavLink to="/" className="social"><i className="fab fa-linkedin-in" /></NavLink>
                     </div>
                     <span>or use your email</span>
-                    <input onChange={formik.handleChange} type="text" placeholder="Username" />{formik.errors.username && formik.touched.username ? (
-                        <span className="text-danger">{formik.errors.username}</span>
+                    <input onChange={formikLogin.handleChange} type="text" placeholder="Username" name="username" />{formikLogin.errors.username && formikLogin.touched.username ? (
+                        <span className="text-danger">{formikLogin.errors.username}</span>
                     ) : null}
-                    <input onChange={formik.handleChange} type="password" placeholder="Password" />{formik.errors.password && formik.touched.password ? (
-                        <span className="text-danger">{formik.errors.password}</span>
+                    <input onChange={formikLogin.handleChange} type="password" placeholder="Password" name="password" />{formikLogin.errors.password && formikLogin.touched.password ? (
+                        <span className="text-danger">{formikLogin.errors.password}</span>
                     ) : null}
                     <NavLink to="/">Forgot your password?</NavLink>
-                    <button className="button-login" >Log in</button>
+                    <button className="button-login" type="submit" >Log in</button>
                 </form>
             </div>
             {/* -----------------SignInEnd------------------ */}
