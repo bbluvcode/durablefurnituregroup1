@@ -264,8 +264,8 @@ function Header(props) {
               </NavLink>
               <ShopingCart_float shopingcart={shopingcart} />
             </div>
-            <div className="search-form">
-              <form className="d-flex pe-3 form-search" onSubmit={handleSubmit}>
+            <div className="search-form ">
+              <form className="d-flex pe-3 ps-0 form-search" onSubmit={handleSubmit}>
                 <input
                   className="form-control form-input-search"
                   type="search"
@@ -275,7 +275,7 @@ function Header(props) {
                   onKeyDown={handleKeyPress}
                 />
                 <button
-                  className="btn btn-outline-dark ms-2"
+                  className="btn btn-outline-dark ms-2 "
                   type="submit"
                   onClick={() => {
                     handleSubmit();

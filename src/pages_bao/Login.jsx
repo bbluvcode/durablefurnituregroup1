@@ -67,7 +67,7 @@ function Login({ users }) {
     return (
         <div className={`container-login ${signIn ? null : "right-panel-active"}`} id="container-login">
             <div className="form-container-login sign-up-container-login">
-                <form action="#" onSubmit={formik.handleSubmit}>
+                <form action="#" onSubmit={formik.handleSubmit} className="form-login">
                     {/* -----------------SignUp------------------ */}
                     <h1>Create Account</h1>
                     <div className="social-container-login">
@@ -93,7 +93,7 @@ function Login({ users }) {
 
             {/* -----------------SignIn------------------ */}
             <div className="form-container-login sign-in-container-login">
-                <form action="#">
+                <form action="#" className="form-login">
                     <h1>Sign in</h1>
                     <div className="social-container-login">
                         <NavLink to="/" className="social"><i className="fab fa-facebook-f" /></NavLink>
