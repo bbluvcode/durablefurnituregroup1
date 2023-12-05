@@ -55,10 +55,6 @@ function Register({ users }) {
                 alert("Register account user successfully");
             }
         }).then(() => navigate(`/login`))
-
-
-
-
     }
     return (
 
