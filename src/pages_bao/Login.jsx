@@ -82,9 +82,9 @@ function Login({ users }) {
                     <input onChange={formik.handleChange} type="text" placeholder="Number Phone" />{formik.errors.phone && formik.touched.phone ? (
                         <span className="text-danger">{formik.errors.phone}</span>
                     ) : null}
-                    <input onChange={formik.handleChange} type="email" placeholder="Email" />{formik.errors.password && formik.touched.password ? (
+                    {/* <input onChange={formik.handleChange} type="email" placeholder="Email" />{formik.errors.password && formik.touched.password ? (
                         <span className="text-danger">{formik.errors.password}</span>
-                    ) : null}
+                    ) : null} */}
                     <input onChange={formik.handleChange} type="password" placeholder="Password" />
                     <button className="button-login">Sign Up</button>
                 </form>
