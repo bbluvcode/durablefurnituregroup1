@@ -86,7 +86,7 @@ function Login({ users }) {
                         <span className="text-danger">{formik.errors.password}</span>
                     ) : null} */}
                     <input onChange={formik.handleChange} type="password" placeholder="Password" />
-                    <button className="button-login">Sign Up</button>
+                    <button className="button-login">Register</button>
                 </form>
             </div>
             {/* -----------------SignUpEnd------------------ */}
@@ -94,7 +94,7 @@ function Login({ users }) {
             {/* -----------------SignIn------------------ */}
             <div className="form-container-login sign-in-container-login">
                 <form action="#" className="form-login">
-                    <h1>Sign in</h1>
+                    <h1>Log in</h1>
                     <div className="social-container-login">
                         <NavLink to="/" className="social"><i className="fab fa-facebook-f" /></NavLink>
                         <NavLink to="/" className="social"><i className="fab fa-google-plus-g" /></NavLink>
@@ -108,7 +108,7 @@ function Login({ users }) {
                         <span className="text-danger">{formik.errors.password}</span>
                     ) : null}
                     <NavLink to="/">Forgot your password?</NavLink>
-                    <button className="button-login" >Sign In</button>
+                    <button className="button-login" >Log in</button>
                 </form>
             </div>
             {/* -----------------SignInEnd------------------ */}
@@ -116,17 +116,17 @@ function Login({ users }) {
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
                         <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
+                        <p className="p-loginform">To keep connected with us please login with your personal info</p>
                         <button className={`ghost button-login `} onClick={() => {
                             setSignIn(true)
-                        }}>Sign In</button>
+                        }}>Log in</button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
+                        <p className="p-loginform">Enter your personal details and start journey with us</p>
                         <button className={`ghost button-login`} onClick={() => {
                             setSignIn(false)
-                        }}>Sign Up</button>
+                        }}>Register</button>
                     </div>
                 </div>
             </div>

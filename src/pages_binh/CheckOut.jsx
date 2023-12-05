@@ -22,7 +22,7 @@ export default function CheckOut() {
 
     return (
         <div className="container container-binh bg-light d-md-flex align-items-center">
-            <div className="card box1 shadow-sm p-md-5 p-md-5 p-4">
+            <div className="card box1 shadow-sm p-md-5 p-4">
                 <div className="fw-bolder mb-4">
                     <span className="fas fa-dollar-sign" />
                     <span className="ps-1">{formatter.format(total)}</span>
@@ -40,7 +40,7 @@ export default function CheckOut() {
                             <span className="ps-1">{formatter.format(promotion + discountVoucher)}</span>
                         </span>
                     </div>)}
-                    
+
                     <div className="d-flex align-items-center justify-content-between text-binh mb-2">
                         <span className>Total shipping fee</span>
                         <span className="fas fa-dollar-sign">
@@ -65,7 +65,7 @@ export default function CheckOut() {
                             <span>Customer Support:</span>
                             <span>online chat 24/7</span>
                         </div>
-                        <div className="btn btn-primary rounded-circle" onClick={()=>{
+                        <div className="btn btn-primary rounded-circle" onClick={() => {
                             navigate("/contact")
                         }}>
                             <span style={{ "color": "#3b3a3a" }} className="fas fa-comment-alt" />
@@ -74,7 +74,7 @@ export default function CheckOut() {
                 </div>
             </div>
             <div className="card box2 shadow-sm">
-                <div className="d-flex align-items-center justify-content-between p-md-5 p-4">
+                <div className="d-flex align-items-center justify-content-between p-4">
                     <span className="h5 fw-bold m-0">Payment methods</span>
                     <div className="btn btn-primary bar">
                         <span className="fas fa-bars" />
@@ -149,7 +149,7 @@ export default function CheckOut() {
                             <button onClick={() => {
                                 dispatch(emptyCart());
                                 navigate("/checkoutsuccess")
-                            }} className="btn btn-primary w-100">Pay {formatter.format(total)}</button>
+                            }} className="btn btn-primary w-100">Pay ${formatter.format(total)}</button>
                         </div>
                     </div>
                 </form>

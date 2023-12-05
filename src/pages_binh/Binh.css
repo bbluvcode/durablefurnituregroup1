@@ -215,7 +215,7 @@ td {
 
 .form-width {
   width: 100%;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 .btn-grad {
@@ -1641,7 +1641,7 @@ h2 {
   text-align: center;
 }
 
-p {
+.p-loginform {
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;

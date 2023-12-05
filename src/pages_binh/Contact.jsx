@@ -200,7 +200,7 @@ function Contact() {
                       <input
                         type="submit"
                         value="SUBMIT"
-                        className="btn btn-outline-dark form-width"
+                        className="btn btn-outline-dark form-width" style={{marginTop:"1.1px"}}
                         disabled={!formik.isValid}
                       />
                     </div>

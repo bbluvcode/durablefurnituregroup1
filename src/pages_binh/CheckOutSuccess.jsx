@@ -7,7 +7,7 @@ export default function CheckOutSuccess() {
             <i className="fas fa-check-circle fa-3x" />
             <h1 className="order__mess">Order Successfully Placed</h1>
             <p className="order__desc">
-                Your order number is <span style={{ color: 'red' }}>#2308A0</span>
+                Your order number is <strong style={{ color: 'red' }}>#2308A0</strong>
             </p>
             <p style={{"textAlign":"center"}}>
                 We have sent a confirm email from bbluvcode@gmail.com to your email address!
