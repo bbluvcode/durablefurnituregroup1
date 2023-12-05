@@ -12,7 +12,7 @@ function Inspiration2() {
                     <h1>Popular types of decorative lights</h1>
                     <h3>Modern table lamp</h3>
                     <p className="font-size-post">Table lamps are lamps with a variety of designs and colors with high flexibility. Table lamps can be suitable for any space</p>
-                    <p className="font-size-post" className="text-diff">
+                    <p className="font-size-post text-diff">
                         Luxurious living room - cozy bedroom to modern office.
                     </p>
                     <p className="font-size-post">
@@ -23,12 +23,12 @@ function Inspiration2() {
                     </p>
                 </div>
                 <div className="col-md-6 btn">
-                    <img src="/img/img_product/imgshape.png" alt="" />
+                    <img src="img/img_product/imgshape.png" alt="" />
                 </div>
             </div>
             <div className="row mb-5">
                 <div className="col-md-6 stand-lamp">
-                    <img src="/img/img_product/imgstandlamp.png" alt="" />
+                    <img src="img/img_product/imgstandlamp.png" alt="" />
                 </div>
                 <div className="col-md-6">
 
