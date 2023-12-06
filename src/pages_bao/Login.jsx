@@ -7,7 +7,7 @@ function Login() {
     const [signIn, setSignIn] = useState(true);
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const isReg = sessionStorage.getItem("isReg");
+    onst [isReg, setIsReg] = useState(false);
     useEffect(()=> {
         fetch("https://655fffed83aba11d99d01309.mockapi.io/users")
         .then((data) => data.json())
@@ -49,7 +49,7 @@ function Login() {
                 if (signIn) {
                     checkLogin(values)
                 } else {
-                    navigate(-1);
+                    navigate("/");
                 }
             }
 
@@ -81,6 +81,11 @@ function Login() {
         })
 
     function addUser(newUser) {
+        console.log(newUser);
+        if (arrUsername.findIndex(element => element === newUser.username) !== -1) {
+            alert("Username already exists, please choose another name");
+            return false;
+        }
 
         // console.log(newUser);
         fetch('https://655fffed83aba11d99d01309.mockapi.io/users', {
@@ -91,9 +96,9 @@ function Login() {
         }).then(res => {
             if (res.ok) {
                 alert("Register account user successfully");
-                sessionStorage.setItem("isReg",true);
+                isReg === false ? setIsReg(true) : setIsReg(false)
             }
-        }).then(() => navigate(`/login`));
+        }).then(() => navigate(`/`));
     }
 
 
@@ -110,18 +115,13 @@ function Login() {
                     </div>
                     <span>or use your email for registration</span>
                     <input onChange={formikRegister.handleChange} type="text" placeholder="User Name" id="username" name="username" />
-                    {arrUsername.findIndex(element => element === formikRegister.values.username ) === -1 ? (
-                        <span className="text-danger">{formikRegister.errors.username = "Username already exists, please choose another name"}</span>
-                    ) : null}
                     {formikRegister.errors.username && formikRegister.touched.username ? (
                         <span className="text-danger">{formikRegister.errors.username}</span>
                     ) : null}
                     <input onChange={formikRegister.handleChange} type="text" placeholder="Number Phone" id="phone" name="phone" />{formikRegister.errors.phone && formikRegister.touched.phone ? (
                         <span className="text-danger">{formikRegister.errors.phone}</span>
                     ) : null}
-                    {/* <input onChange={formik.handleChange} type="email" placeholder="Email" />{formik.errors.password && formik.touched.password ? (
-                        <span className="text-danger">{formik.errors.password}</span>
-                    ) : null} */}
+                  
                     <input onChange={formikRegister.handleChange} type="password" placeholder="Password" id="password" name="password" />
                     {formikRegister.errors.password && formikRegister.touched.password ? (
                         <span className="text-danger">{formikRegister.errors.password}</span>
