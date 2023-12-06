@@ -1,6 +1,6 @@
 import { NavLink, useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   getProductsSearchApiAction,
@@ -95,7 +95,10 @@ function Header(props) {
     updateOrderSummary();
   }, [shopingcart]);
 
-  var isLogin = sessionStorage.getItem("islogin");
+  const isLogin = sessionStorage.getItem('islogin');
+
+
+
   console.log(isLogin);
   var username = sessionStorage.getItem("username");
   console.log(username);
