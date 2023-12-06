@@ -1,1 +1,1 @@
-https://653f52049e8bd3be29e0427e.mockapi.io/products
+linkViewWeb: https://653f52049e8bd3be29e0427e.mockapi.io/products
