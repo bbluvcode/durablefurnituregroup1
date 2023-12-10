@@ -93,9 +93,10 @@ function Footer() {
                   <NavLink to="youmayalsolike">You May Also Like</NavLink>
                 </li>
                 <li className="menu-item menu-item-type-post_type_archive menu-item-object-customer">
-                  <NavLink to="#">Our partners</NavLink></li>
+                  {/* <NavLink to="#">Our partners</NavLink> */}
+                </li>
                 <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                  <NavLink to="#">Reviews</NavLink>
+                  {/* <NavLink to="#">Reviews</NavLink> */}
                 </li>
               </ul>
             </div>
