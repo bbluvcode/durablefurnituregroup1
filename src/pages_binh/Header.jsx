@@ -12,6 +12,7 @@ import { Alert } from "react-bootstrap";
 import ShopingCart_icon from "./components/ShopingCart_icon";
 import ShopingCart_icon_scrollheader from "./components/ShopingCart_icon_scrollheader";
 import ShopingCart_float from "./components/ShopingCart_float";
+import Swal from 'sweetalert2'
 
 function Header(props) {
   const { shopingcart } = props;
@@ -103,6 +104,39 @@ function Header(props) {
   var username = sessionStorage.getItem("username");
   console.log(username);
 
+  // Handle event log out user
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Do you want to log out?",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        sessionStorage.removeItem('islogin');
+        sessionStorage.removeItem('username');
+        Swal.fire("You are log out success!");
+        navigate(-1);
+      } else if (result.isDenied) {
+        Swal.fire("You don't log out");
+        navigate(-1);
+      }
+    });
+    // Swal.fire({
+    //   position: "top-center",
+    //   icon: "success",
+    //   title: "Are you sure to log out?",
+    //   showConfirmButton: true,
+    //   timer: 1500
+    // });
+   
+  
+  }
+
+
+
+
   return (
     <div className="">
       {/* ----------------------------topheader---------------------------------- */}
@@ -142,7 +176,7 @@ function Header(props) {
             >
               <i class="fa fa-user-circle ms-1 me-1"></i>
               <span className="title_headersmall">
-                {isLogin === "true" ? username : "Login"}
+                {isLogin === "true" ? <span onClick={handleLogout}> {username} </span> : "Login"}
               </span>
             </NavLink>
           </div>

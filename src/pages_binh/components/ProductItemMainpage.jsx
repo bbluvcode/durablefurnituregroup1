@@ -15,6 +15,7 @@ function ProductItemMainpage(props) {
   const navigate = useNavigate();
 
   const [stars, setStars] = useState([1, 2, 3, 4, 5]);
+  const id = product.id; 
 
   return (
     <div className="binh-father-card">
@@ -42,7 +43,7 @@ function ProductItemMainpage(props) {
           src={product.image}
           alt="Title"
           onClick={() =>
-            navigate("/product-detail", { state: { key: product.name } })
+            navigate(`/product/${id}`)
           }
           style={{ border: "none", background: "white", cursor: "pointer" }}
         />
@@ -54,9 +55,7 @@ function ProductItemMainpage(props) {
                 <div
                   className="col-10"
                   onClick={() =>
-                    navigate("/product-detail", {
-                      state: { key: product.name },
-                    })
+                    navigate(`/product/${id}`)
                   }
                   style={{
                     border: "none",
