@@ -43,7 +43,7 @@ function App() {
   const linkCompare = "/compare";
   const linkFilterBrand = "/filterBrand";
   const linkFilterRoom = "/filterRoom";
-  const linkProductDetail = "/product-detail";
+  const linkProductDetail = "/product/:id";
   const linkInspiration = "/blog";
   const linkInspiration1 = "/inspiration1";
   const linkInspiration2 = "/inspiration2";
@@ -51,12 +51,17 @@ function App() {
   const linkInspiration4 = "/inspiration4";
 
   const [products, setProducts] = useState([]);
-
+  
+  const [review, setReview] = useState([]);
+  
   useEffect(() => {
     fetch("https://6558bb31e93ca47020a9a821.mockapi.io/products")
       .then((data) => data.json())
       .then((dataList) => setProducts(dataList));
+  
   }, []);
+  console.log(review);
+
 
   console.log(products);
 
@@ -102,10 +107,7 @@ function App() {
         {/* <Route path="/register" element={<Register users={users} />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/wishlist" element={<WishList wishList={wishList} />} />
-        <Route
-          path="/youmayalsolike"
-          element={<RelatedProduct wishList={wishList} />}
-        />
+        <Route path="/youmayalsolike" element={<RelatedProduct wishList={wishList} />} />
 
         <Route path={linkInspiration} element={<Inspiration />} />
         <Route path={linkInspiration1} element={<Inspiration1 />} />
@@ -115,6 +117,7 @@ function App() {
 
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/checkoutsuccess" element={<CheckOutSuccess />} />
+
       </Routes>
 
       <Footer />
