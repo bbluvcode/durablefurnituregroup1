@@ -7,11 +7,16 @@ import alertify from "alertifyjs";
 import "alertifyjs/build/css/alertify.css";
 import { useNavigate } from "react-router-dom";
 import WishListItem from "../WishListItem";
+import { useState } from "react";
+
 
 function ProductItem(props) {
   const { product } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [stars, setStars] = useState([1, 2, 3, 4, 5]);
+  const id = product.id;
 
   return (
     <div className="">
@@ -39,7 +44,7 @@ function ProductItem(props) {
           src={product.image}
           alt="Title"
           onClick={() =>
-            navigate("/product-detail", { state: { key: product.name } })
+            navigate(`/product/${id}`)
           }
           style={{ border: "none", background: "white", cursor: "pointer" }}
         />
@@ -97,21 +102,13 @@ function ProductItem(props) {
 
                 <div className="star-rating">
                   <ul className="list-inline">
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star" />
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-star-o" />
-                    </li>
+                  {stars
+                      .filter((star) => star <= product.review[0].star)
+                      .map((star) => (
+                        <li className="list-inline-item">
+                          <i className="fa fa-star" />
+                        </li>
+                      ))}
                   </ul>
                 </div>
               </span>

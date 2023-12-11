@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, NavLink } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { delProductInCart } from "../../redux/reducers/shopReducer";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function ShopingCart_float(props) {
             <button
               className="container-fluid"
               onClick={() =>
-                navigate("/product-detail", { state: { key: product.name } })
+                navigate(`/product/${product.id}`)
               }
               style={{ border: "none", background: "white" }}
             >

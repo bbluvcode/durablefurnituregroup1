@@ -7,7 +7,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import WishListItemDetail from "./WishListItemDetail";
 
+
 function ShopingCartItem({ product, index, updateOrderSummary }) {
+  const id = product.id; 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +27,7 @@ function ShopingCartItem({ product, index, updateOrderSummary }) {
             className="card-img-top"
             alt="..."
             onClick={() =>
-              navigate("/product-detail", { state: { key: product.name } })
+              navigate(`/product/${id}`)
             }
             style={{ border: "none", background: "white", cursor: "pointer" }}
           />
@@ -35,7 +38,7 @@ function ShopingCartItem({ product, index, updateOrderSummary }) {
               <h5
                 className="card-title-cartproduct"
                 onClick={() =>
-                  navigate("/product-detail", { state: { key: product.name } })
+                  navigate(`/product/${id}`)
                 }
                 style={{
                   border: "none",
