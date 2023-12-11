@@ -1,153 +1,9 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import "slick-carousel/slick/slick.css";
-
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import * as React from "react";
-import Rating from "@mui/material/Rating";
-import Box from "@mui/material/Box";
-import Swal from 'sweetalert2'
-import "./ProductDetail.css"
-import { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import ButonsProductDetailPage from "../pages_binh/button/ButonsProductDetailPage";
-import Typography from '@mui/material/Typography';
-import ProductItemMainpage from "../pages_binh/components/ProductItemMainpage";
-function ProductDetail({ products }) {
-
-  console.log(products);
-  const [product, setProduct] = useState({});
-
-  const navigate = useNavigate();
-  const { id } = useParams();
-
-  const [showComponent, setShowComponent] = useState(false);
-
-  const [isComment, setIsComment] = useState(false);
-
-
-  useEffect(() => {
-    setInterval(() => {
-      setShowComponent(true);
-    }, 3000)
-    fetch(`https://6558bb31e93ca47020a9a821.mockapi.io/products/${id}`)
-      .then((data) => data.json())
-      .then((dataList) => setProduct(dataList));
-    window.scrollTo(0, 0);
-    setImgUrl("");
-
-  }, [isComment, id]);
-
-  console.log(product);
-
-  const reviewArr = product.review;
-  console.log(reviewArr);
-
-  
-
-
-  const [imgUrl, setImgUrl] = useState("");
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 5000,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
-    pauseOnHover: true,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 1
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1
-        }
-      }
-    ]
-  };
-  console.log(product.review);
-
-
-
-
-  const [value, setValue] = useState(5);
-
-  const [comment, setComment] = useState("");
-
-  var isLogin = sessionStorage.getItem("islogin");
-  console.log(isLogin);
-  var username = sessionStorage.getItem("username");
-  console.log(username);
-
-  const handleComment = (e) => {
-    e.preventDefault();
-
-    let sendingTime = new Date();
-    let time = sendingTime.toString();
-    const userComment = [{
-      user: username, comment: comment, star: value, time: time
-    }]
-    console.log(userComment);
-    const newReview = reviewArr.concat(userComment);
-    fetch(`https://6558bb31e93ca47020a9a821.mockapi.io/products/${id}`, {
-      method: 'PUT', // or PATCH
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ review: newReview })
-    }).then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
-    }).then(task => {
-      isComment === false?setIsComment(true):setIsComment(false);
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "You have successfully rated this product.Thank you!",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }).catch(error => {
-      // handle error
-    })
-
-
-
-  }
-  return (
-    <>
-      {showComponent && <div className="my-5">
-        <div className="container">
-          <div className="row">
+function ProductItem(product) {
+    return ( 
+        <div className="row">
             {/* BEGIN IMAGE PRODUCT - LEFT */}
             <div className="col-md-8 product-review-left mb-4">
-              <div className="row image pb-3">
+              <div className="row image">
                 <div className="col-12 img-product mb-4">
                   <div className="img-display">
                     <img src={imgUrl === "" ? product.image : imgUrl} alt="" />
@@ -386,13 +242,7 @@ function ProductDetail({ products }) {
 
           </div>
 
-        </div>
+     );
+}
 
-      </div >}
-    </>
-  )
-
-
-};
-
-export default ProductDetail;
+export default ProductItem;

@@ -31,7 +31,7 @@ function Product({ products }) {
                             className="col-6 col-md-6 col-lg-4  productitem-cart"
                             key={product.pid}
                         >
-                            <ProductItemMainpage product={product} />
+                            <ProductItemMainpage product={product}/>
                         </div>
 
 

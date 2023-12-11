@@ -1,15 +1,13 @@
-.img-display {
-    
-}
+
 .img-display > img {
-    object-fit: cover;
+    object-fit:cover;
     width: 100%;
-    height: auto
+    height: 100%;
 }
 
 .img-product-thumbnail{
-    height: 100px;
-    width: 400px;
+  width: 50%;
+  height: 50%;
 }
 
 .img-product-thumbnail button{
@@ -24,4 +22,7 @@ button.btn-sendComment {
 a.require-login {
     cursor: pointer;
     color: red;
+}
+.product-detail-right span {
+    font-size: 16px;
 }

@@ -11,11 +11,6 @@ function Register({ users }) {
             initialValues: {
                 username: '',
                 password: '',
-                confirmPassword: '',
-                fullname: '',
-                gender: '',
-                birthday: "",
-                address: "",
                 phone: "",
 
             },
@@ -27,15 +22,7 @@ function Register({ users }) {
             validationSchema: Yup.object().shape({
                 username: Yup.string().required('Required').min(6).max(12),
                 password: Yup.string().required('Required').min(6).max(8),
-                confirmPassword: Yup.string().required('Required').min(6).max(8),
-                fullname: Yup.string().required('Required'),
-                gender: Yup.string().required('Required'),
-                birthday: Yup.date().required('Required'),
-                address: Yup.string().required('Required'),
                 phone: Yup.string().required('Required').length(10),
-
-
-
 
             }),
 
